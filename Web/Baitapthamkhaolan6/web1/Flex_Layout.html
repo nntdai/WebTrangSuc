@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+	
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+	.flex-container div{
+				width: 100px;
+				background-color: #1D2F87;
+				margin: 5px;
+				flex-grow:2;
+	}
+	.flex-container1 {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				align-content: stretch;
+		
+}
+	.flex-container2 {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+	
+	.flex-container1 > div {
+  background-color: #58257b;
+  width: 200px;
+ 	flex-grow:1;
+		margin: 5px;
+  color: white;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+	@media only screen and (max-width: 600px) {
+    #nav {
+        flex-direction: column;
+    }
+		
+.item{
+	background-color:#00FF99;
+	border:#FF0000 solid 2px;
+	width:33.3%;
+	height:300px;
+	flex-wrap: wrap;
+ justify-content: space-between;
+
+}
+.nav-list{
+	padding-left:0;
+	margin:auto 16px;
+}
+.nav-item{
+	color:#009933;
+	list-style:none;
+	margin:0 8px;
+	display:inline-block;
+}
+</style>
+</head>
+
+<body>
+<div class="flex-container1">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	
+</div>
+<div class="nav">
+	<ul class="nav-list">
+		<li class="nav-item">Giới thiệu</li>
+		<li>Kết nối</li>
+		<li>Tải ứng dụng</li>
+	</ul>
+</div>
+
+<div class="flex-container">
+	<div>t1</div>
+	<div>t2</div>
+	<div>t3</div>
+	<div>t4</div>
+	<div>t5</div>
+</div>
+
+</body>
+</html>

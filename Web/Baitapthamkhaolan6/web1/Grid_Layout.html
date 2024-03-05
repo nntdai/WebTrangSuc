@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+.container {
+	display: grid;
+	/* grid-template-columns: column size....(số cột)*/
+				/*grid-template-columns:200px 200px 100px;*/
+	grid-template-columns:200px 200px 100px;
+	
+		
+		grid-template-columns: calc(50%-40px) calc(30%-40px)calc(20%-40px);
+	/* Track lin bắt đầu từ 1, 3 cột track line là 4*/
+					/*max-width: 960px;*/
+
+     /*grap: grid-column-gap, grid-row-gap
+					gap count: column count 1
+		
+					*/
+	grid-column-gap: 40px;
+	margin: 0 auto;
+}
+.container div {
+	background: #3bbced;
+	padding: 30px;
+}
+.container div:nth-child(even) {
+	background: #f75f5d;
+	padding: 30px;
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+			<div class="layout-item">
+								<img src=https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=333&q=80 class="layout-img"
+			</div>
+			<div class="layout-item">
+								<img src=https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=333&q=80 class="layout-img"
+			</div>
+			<div class="layout-item">
+								<img src=https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=333&q=80 class="layout-img"
+			</div>
+</div>
+
+<div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>

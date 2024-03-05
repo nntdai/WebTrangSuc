@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style>
+	#header{background-color:#00CC00; height:100px; position:relative}
+	#slideshow{background-color:#00FFFF; height:400px}
+	#divcontent{
+		width:90%;
+		height:700px;
+		background-color:#FFFFFF;
+		position:absolute;
+		top:300px;
+		left:10px;
+		right:50px;
+		margin:50px, auto;
+		border:solid #FF0000 3px;
+		margin:auto;
+		border-radius:15px
+	}
+	.groupproduct{
+		background: #0EF136;
+	}
+	groupproduct:first-child{
+		background: #ED0B0F;
+	}
+	.product{
+		width:19%;
+		height:250px;
+		border:#FF0000 solid 3px;
+		float:left;
+		margin-top:15px;
+		margin-bottom:15px;
+		margin-right:15px;
+		margin-left:30px
+	}
+	
+	#mid{background-color:#999900; height:600px}
+	#footer{background-color:#99CC00; height:100px}
+	
+	#header div{
+		background-color:#669900;
+	}
+	#header div:hover{
+		background-color:#FFFF00;
+		
+	}
+</style>
+
+<link href="css/style1.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body leftmargin="0px" rightmargin="0px">
+<div style="position:relative">
+	<div id="header">
+		<a href="#"><div id="hienthi" style="position:absolute; right:10px; bottom:15px" onclick="">Hiển Thị</div></a>
+	</div>
+	<div id="slideshow">slideshow</div>
+	<div id="divcontent" align="center">
+		<div class="groupproduct" style="width:100%; border:#0000FF solid 3px" align="center">
+			<div class="product"></div>
+			<div class="product"></div>
+			<div class="product"></div>
+			<div class="product"></div>
+			<div style="clear:both"></div>
+		</div>
+		
+		<div style="width:100%; border:#0000FF solid 3px; margin-top:15px">
+			<div class="product"></div>
+			<div class="product"></div>
+			<div class="product"></div>
+			<div class="product"></div>
+			<div style="clear:both"></div>
+		</div>
+		<script>
+			dem=1;
+			for(i=1;i<=8;i++)
+			{
+				s="";
+				if(dem==1 || dem==5)
+				{	
+					s='<div style="width:100%; border:#0000FF solid 3px" align="center">';
+					
+				}
+				else
+				{
+					if(dem==4)
+						t=t+'<div style="clear:both"></div></div>';
+					else
+					{
+						t=t+<div class="product">i</div>
+						dem++;
+					}
+				}
+				dem=1;
+				s=s+t;
+			}
+		</script>
+	</div>
+	<div id="mid">mid</div>
+	<div id="footer">footer</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+
+        /** Global CSS **/
+    .container 
+        {
+        background: red;
+        max-width: 960px;
+        max-height: 1000px;
+        margin: 0 auto;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-wrap: wrap; /*lên dòng*/
+        justify-content: flex-end; /*canh từ bên phải, mặc định canh bên trái qua*/
+        }
+        /** Flex layout **/
+
+    .item 
+    {
+        background: blue;
+        margin: 5px;
+        color: white;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        width: 300px;
+        height: 100px;
+       
+    }
+    .form__container{
+        max-width: 720px;
+        padding: 32px;
+        margin: 36px auto 0 auto;
+        background-color: aquamarine;
+    }
+    .form__row{
+        padding: 8px 0;
+        display: flex;
+    }
+    .form__label{
+        min-width: 90px;
+    }
+    .form__input{
+
+        flex: 1;
+    }
+    .column-layout{
+        padding: 0 16px;
+        display: flex;
+        flex-wrap: wrap;
+     
+    }
+    .column-item{
+        padding: 0 16px;
+        flex: 1;
+        border: solid 2px red;
+    }
+    .sidebar-one{
+        flex: 1;
+    }
+    .sidebar-two{
+        flex: 1;
+    }
+    .main-column{
+        flex:3
+    }
+    /*feature layout*/
+    .feature-layout{
+        margin-top: 36px;
+        display: flex;
+        justify-content: space-between;
+        -ms-flex-wrap: wrap;
+    }
+    .feature-item{
+        padding: 12px 16px;
+        margin-top: 16px;
+        border: solid 3px red;
+        flex-basis: 30%; /*xet phan tram cho cac item*/
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>      
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+        <div class="item item4">4</div>    
+    </div>
+    <div class="form-container">
+        <form>
+            <div class="form__row">
+                <label class="form__label" for="name">Name</label>
+                <input class="form__input" type="text" />
+            </div>
+            <div class="form__row">
+                <label class="form__label" for="password">Password</label>
+                <input class="form__input" type="password" />
+            </div>
+        </form>
+    </div>
+
+    <div class="column-layout">
+        <div class="column-item sidebar-one">
+            <h2>Sidebar One</h2>
+            <p>Helloo</p>
+        </div>
+        <div class="column-item main-column">
+            <h2>Main Column</h2>
+            <p>heloo 1</p>
+            <p>heloo 2</p>
+            <p>heloo 3</p>    
+        </div>
+        <div class="column-item sidebar-two">
+            <h2>SideBar Two</h2>
+            <p>Hello SideBar Two</p>
+        </div>
+    </div>
+
+
+    <div class="feature-layout">
+        <div class="feature-item">
+            <h2>Sidebar One</h2>
+            <p>Helloo</p>
+        </div>
+        <div class="feature-item">
+            <h2>Main Column</h2>
+            <p>heloo 1</p>
+            <p>heloo 2</p>
+            <p>heloo 3</p>    
+        </div>
+        <div class="feature-item">
+            <h2>SideBar Two</h2>
+            <p>Hello SideBar Two</p>
+        </div>
+    </div>
+</body>
+</html>

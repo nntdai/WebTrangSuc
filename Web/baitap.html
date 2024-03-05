@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin-top:0px;
+            margin-left:0px;
+            margin-right:0px;
+        }
+        ul,li{
+            margin:0px;
+            padding:0px;
+        }
+        #topmenu{
+            height:30px; 
+            line-height:30px
+        }
+        #topmenu ul{
+            margin-top:0px;
+            width:100%;
+            list-style: cjk-ideographic;
+        }
+        #topmenu li{
+            list-style-position: inside;
+            display: inline;
+            margin-right: 15px;
+        }
+        #topmenu li:first-child{
+            margin-left: 15px;
+        }
+        #right{
+            width:20%; 
+            border: solid 2px; 
+            float:right
+        }
+        #content{
+            width:60%; 
+        }
+        .menu{
+            width:20%; 
+            background-color: antiquewhite;
+        }
+        .menu ul{
+            margin-top:0px;
+            width:100%;
+            list-style: cjk-ideographic;
+        }
+        .menu li{
+            border:solid 1px;
+        }
+        @media only screen and (max-width: 800px) {
+            #topmenu {
+                height: 100%;
+            }
+            #topmenu li{
+                display: block;
+                width: 100%;
+                border: solid 1px;
+            }
+            #topmenu li:first-child{
+                margin-left:0px;
+            }
+            .menu{
+                width:30%;
+            }
+            #right{
+                display: none;
+            }
+            #content{
+                width: 70%;
+            }
+            .container_sanpham{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .container_sanpham{
+            border: solid 2px black;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            align-items: center;
+        }
+        .sanpham_item{
+            width: 150px;
+            height: 180px;
+            margin:10px 10px;
+            border: solid 2px;
+            background-color:aquamarine;
+        }
+    </style>
+    <script language="javascript">
+        document.write("Hello world")
+    </script>
+</head>
+<body>
+    <div style="width:90%; border:solid 5px; margin:0px auto">
+        <div style="margin:5px 5px; border:solid 2px; background-color:darkcyan; height:150px; position: relative">
+            <img src="images/SGU-LOGO-400x400.png"; width="150"; height="150"; style="margin-left:10px">
+            <p style="position: absolute; left: 250px; top: 20px" >
+                <font size="5"><b>Đại học Sài Gòn</b></font>
+            </p>
+        </div>
+        <div id="topmenu"; style="margin:5px 5px; border:solid 2px;background-color: cornsilk">
+            <ul>
+                <li><a href="#">Trang chu</a></li>
+                <li><a href="#">Gioi thieu</a></li>
+                <li><a href="#">Thong tin tuyen sinh</a></li>
+                <li><a href="#">Thong tin dao tao</a></li>
+                <li><a href="https://www.facebook.com/truc.xuan.161/" target="_blank">Lien he</a></li>
+            </ul>
+        </div>
+        <div style="margin:5px 5px; border:solid 2px; height:auto; overflow: hidden">
+            <div class="menu"; style="border:solid 2px; float:left; height: auto">
+                <ul type="square">
+                <li><a href="#">Trang chu</a></li>
+                <li><a href="#">Gioi thieu</a></li>
+                <li><a href="#">Thong tin tuyen sinh</a></li>
+                <li><a href="#">Thong tin dao tao</a></li>
+                <li><a href="#">Lien he</a></li>
+                </ul>
+                
+            </div>
+            <div id="content"; style="float:left">
+                <div class="container_sanpham">
+                    <div class="sanpham_item">a</div>
+                    <div class="sanpham_item">b</div>
+                    <div class="sanpham_item">c</div>
+                    <div class="sanpham_item">d</div>
+                    <div class="sanpham_item">a</div>
+                    <div class="sanpham_item">b</div>
+                    <div class="sanpham_item">c</div>
+                    <div class="sanpham_item">d</div>
+                    <div class="sanpham_item">a</div>
+                    <div class="sanpham_item">b</div>
+                    <div class="sanpham_item">c</div>
+                    <div class="sanpham_item">d</div>
+                </div>
+            </div>
+            <div id="right">
+                <p>right</p>
+            </div>
+        </div>
+            <div style="margin: 5px 5px; border:solid 2px; height:150px; clear:both">
+                <p>Footer</p>
+                <div style="margin: 5px 5px; border: solid 1px; background-color:aquamarine; float:left; clear:both">
+                    <a href="http://127.0.0.1:5500/baitap.html#">trở lại đầu trang</a>
+                </div>
+                <p>&nbsp;</p>
+            </div>
+    </div>
+</body>
+</html>

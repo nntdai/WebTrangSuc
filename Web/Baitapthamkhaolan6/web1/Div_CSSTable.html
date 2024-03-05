@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+.divTable
+    {	
+		margin:0 auto;
+        display:  table;
+        width:auto;
+        background-color:#eee;
+        border:3px solid  #FF0000;
+        border-spacing:5px;/*cellspacing:poor IE support for  this*/
+        border-collapse:separate;
+	   /* border-collapse: collapse;*/
+    }
+	.headRow{}
+	.headRow div{
+		padding-left:15px;
+	}
+    .divRow
+    {
+       display:table-row;
+       width:auto;
+    }
+	.divRow div{
+		padding-left:15px;
+	}
+    .divCell
+    {
+        float:left;/*fix for  buggy browsers*/
+        display:table-column;
+        width:300px;
+        background-color:#ccc;
+		border:#0000CC solid 2px;
+		
+    }
+</style>
+</head>
+
+<body>
+<body>
+  <form id="form1">
+      <div class="divTable">
+             <div class="headRow">
+                <div class="divCell" align="center">Customer ID</div>
+                <div  class="divCell">Customer Name</div>
+                <div  class="divCell">Customer Address</div>
+             </div>
+            <div class="divRow">
+                  <div class="divCell">001 nguyễn công tằng tôn nữ ngọc lệ</div>
+                <div class="divCell">002</div>
+                <div class="divCell">003</div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">xxx</div>
+                <div class="divCell">yyy</div>
+                <div class="divCell">www</div>
+           </div>
+            <div class="divRow">
+                <div class="divCell">ttt</div>
+                <div class="divCell">uuu</div>
+                <div class="divCell">Mkkk</div>
+           </div>
+
+      </div>
+  </form>
+</body>
+</html>

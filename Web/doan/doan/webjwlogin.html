@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        /* Khung login -*/
+        #khung{
+            height:510px; 
+            width:400px; 
+            margin:50px; 
+            border:outset 5px black;
+            background-color: white;
+        }
+        .nhap{
+            width: 100%;
+            height:80px;
+            margin-top: 15px;
+        }
+        #UserName{
+            border: none;
+            border-bottom: solid;
+            padding: 20px;
+            outline: none;
+            height:50%;
+            width:95%;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        #ipnPass
+        {
+        border: none;
+            border-bottom: solid;
+            padding: 20px;
+            outline: none;
+            height:50%;
+            width:83%;
+            margin-left: 10px;
+            font-size: 20px;
+            float:left;
+        }
+        #btnPass      /*  nut con mat */
+        {
+            margin-top: 4px;
+            cursor: pointer;
+            background-color: white;
+            border:none;
+            border-bottom:solid;
+        }
+        .or{
+            
+        }
+        .orlogin{
+            border: solid black;
+            border-radius: 10px;
+            width: 45%;
+            margin-top: 2%;
+            margin-left: 3.5%;
+            height: auto;
+            float: left;
+        }
+        .orlogin:hover{
+            background-color: whitesmoke;
+        }
+        .orlogin img{
+            border: none;
+            outline: none;
+            width: 25px;
+            height: 25px;
+            position: relative;
+            left:42%;
+            top:2px;
+        }
+        #login{
+            border:none;
+            position: relative;
+            left:40%;
+            width: 80px;
+            height: 80px;
+            
+            cursor: pointer;
+        }
+        #loGin img     /*mui ten login*/
+        {             
+            margin: auto;
+            width: 50px;
+            height: 50px;
+        }
+        #loGin 
+        {
+            height:100%;
+            width: 100%;
+            border-radius :20px;
+            background-color: white;
+            cursor: pointer;
+        }
+        #loGin:hover{
+            background-color:whitesmoke;
+        }
+        /* - Khung login */
+    </style>
+    <script language="javascript">
+
+        // js của login box -
+        function hideImage()
+        {
+            var kq='<img src="images/hide.svg" id="hideImage" width="30px" height="30px">';
+            return kq;
+        }
+        function showImage()            
+        {
+            var kq='<img src="images/show.svg" id="hideImage" width="30px" height="30px">';
+            return kq;
+        }
+        function hidePass(btnPass)         //an hien mk
+        {
+            const ipnElement=document.getElementById("ipnPass");
+            const currentType=ipnElement.getAttribute("type");
+            var hideButton=btnPass;
+
+            if (currentType==="password") {
+                ipnElement.setAttribute("type","text");
+               // hideButton.replace(showImage,hideImage);
+               btnPass.innerHTML=showImage();
+            }
+            else 
+            {
+                ipnElement.setAttribute("type","password");
+               // hideButton.replace(hideImage,showImage);
+               btnPass.innerHTML=hideImage();
+            }
+        }
+        
+            
+        function checkLog()           //kt nhap tk mk
+        {
+            var passValue=passWord.value;
+            if (userNameValue===' ')
+            setError(userName,"Tên tài khoản không được để trống");
+            else{
+                setSuccess(userName);
+            }
+        }
+
+        function checkUserName()
+        {
+            const userName=document.getElementById("UserName");
+            let ErrorUN=document.getElementById("ErrorUN");
+            let userNameValue=userName.value;
+            if (userNameValue=="")
+            {
+                ErrorUN.setAttribute("style","color:red;margin-left:10px;font-family: Verdana;font-size:14px")
+                ErrorUN.innerHTML="Username không được để trống !";
+            }
+            else 
+            {
+            ErrorUN.setAttribute("style","color:green;margin-left:10px;font-family: Verdana;font-size:14px")
+            ErrorUN.innerHTML="Username được chấp nhận !";}
+        }
+        function checkPass()
+        {
+            var passWord=document.getElementById("ipnPass");
+            let ErrorP=document.getElementById("ErrorP");
+            let passValue=passWord.value;
+            if (passValue=="")
+            {
+                ErrorP.setAttribute("style","color:red;margin-left:10px;font-family: Verdana;font-size:14px")
+                ErrorP.innerHTML="Password không được để trống !";
+            }
+            else 
+            {
+                ErrorP.setAttribute("style","color:green;margin-left:10px;font-family: Verdana;font-size:14px")
+                ErrorP.innerHTML="Password được chấp nhận !";}
+        }
+        // -js của login box
+    </script>
+</head>
+<body>
+    <div style="width: 100%; height:1000px; border:solid; background-color: aquamarine">
+        <div id="khung">
+            <div style="height:100px">
+                <div style="float:right; width:35px; height:30px;cursor: pointer;">
+                    <img src="images/close.svg" height="35px" width="35px">
+                </div>
+                <div style="float:left; height:auto; margin-top:30px; margin-left: 130px">
+                    <font size="7px" face="Verdana">Login</font>
+                </div>
+            </div>
+            <div style="height:auto">
+                <div class="nhap">
+                    <div style="height:auto; margin-left:20px; margin-top:5px; float:left">
+                        <img src="images/account1.svg" width="30px" height="30px">
+                    </div>
+                    <input name="UserName" id="UserName" value="" type="text" placeholder="Username or Phone number" onblur="checkUserName()" />
+                    <div id="ErrorUN" style="height:20px"></div>
+                </div>
+                <div class="nhap" >
+                    <div style="height:auto; margin-left:20px; margin-top:5px; float:left;width: 100%;">
+                        <img src="images/password.svg" width="30px" height="30px">
+                    </div>
+                    <input name="ipnPass" id="ipnPass" value="" type="password" placeholder="Password" onblur="checkPass()"/>
+                    
+                    <div id="eyes" style="float:left;clear:right;">
+                        <button name="btnPass" id="btnPass" type="button" onclick="hidePass(this)">        <!-- an hien mat khau --> 
+                            <img src="images/hide.svg" id="hideImage" width="30px" height="30px">
+                        </button> 
+                    </div>
+                </div>
+                <div id="ErrorP" style="height:20px;"></div>
+                <div class="or">
+                    <center><font size="3px" face="Verdana">Or</font></center>
+                </div>
+                <div style="height: 54px">
+                    <a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                        <div class="orlogin">
+                            <img src="images/facebookkv.svg">
+                        </div>
+                    </a>
+                    <a href="#", style="text-decoration: none">
+                        <div class="orlogin">
+                            <img src="images/search-engine.svg">
+                        </div>
+                    </a>
+                </div>
+                <div style="height: auto">
+                    <a href="#", style="text-decoration: none">
+                        <div id="login">
+                            <button name="loGin" id="loGin" type="button" onclick="checkUserName()" >
+                                <img src="images/arrow-right.svg">
+                            </button>
+                        </div>
+                    </a>
+                </div>
+                <div style="margin-top: 10px">
+                    <center><font size="3px" face="Verdana">
+                        No account ? <a href="#", style="text-decoration: none">Create account</a>
+                    </font></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <style>
+        li{
+            display: inline;
+            margin-right: 50px;
+        }
+        #Footer{
+            height:250px; 
+            width:100%; 
+            background-color:black;
+            overflow: hidden;
+        }
+        #left{
+            width:350px;
+            margin-left:15px;
+            margin-top: 15px;
+            float:left;
+            position: absolute;
+        }
+        #right{
+            width:650px;
+            float:right;
+            text-align: center;
+            line-height: 30px;
+        }
+        .pp img{
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+        }
+        @media only screen and (max-width:1000px) {
+            li{
+                display:block;
+            }
+            #Footer{
+                height:auto;
+            }
+            #left{
+                width:40%;
+            }
+            #right{
+                width:60%;
+            }
+            .pp img{
+                width:80px;
+                height:80px;
+                margin-left:20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="Footer">
+        <div id="left">
+            <font size="4px", face="Verdana"color="white">JEWEL HEARTS<br></font>
+            <font size="3px", face="Verdana"color="white">
+                <p>Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM</p>
+                <p>Email: JewelHearts@gmail.com</p>
+                <p>Num: (+84)986197629</p>
+            </font>
+            <div><a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                <img src="images/facebook-logo-2019.svg", width="50", height="50">
+            </a>
+            <a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                <img src="images/twitter.svg", width="60", height="50", style="margin-left:15px">
+            </a></div>
+        </div>
+            <div id="right">
+                <font size="4px", face="Verdana"color="white">
+                <ul>
+                    <li><a href="#", style="text-decoration: none; color:white">SUPPPORT</a></li>
+                    <li><a href="#", style="text-decoration: none; color:white">CONTANT US</a></li>
+                    <li><a href="#", style="text-decoration: none; color:white">ABOUT JEWEL HEARTS</a></li>
+                </ul></font>
+                <font size="4px", face="Verdana"color="white">PAYMENT METHODS<br></font>
+                <div class="pp", style="margin-right:30px; margin-top:20px"><a href="#", style="text-decoration: none">
+                    <img src="images/google-pay.svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/visa.svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/paypal (1).svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/master-card.svg">
+                </a></div>
+            </div>
+    </div>
+</body>
+</html>

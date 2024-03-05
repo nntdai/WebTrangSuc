@@ -1,0 +1,238 @@
+<html >
+    <meta charset="utf-8"
+<head>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="js/javascript.js"></script>
+    <style>
+
+* {
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+}
+
+    #topmenu ul li{
+            color:white ;
+            background: black;
+            display: inline-block;
+            line-height: 40px;
+            padding: 0px 20px;
+            margin:0px 1px;
+          
+    }
+     
+
+@media only screen and (max-width: 750px) {
+    
+    #topmenu ul li{
+            color:white ;
+            background: blueviolet;
+            display: block;
+            margin: 0px;
+            width: 100%;
+            padding: 0px;
+            border: solid 1px red;
+             
+        } 
+    #demo
+    {
+        display: block;
+    }
+}
+
+    #demo{
+        
+        display: block;
+       
+    }
+        p{
+             
+              
+        }
+        ul, li{
+            margin: 0px;
+            padding: 0px;
+
+        }
+        
+        #wrapper{
+            border: red solid 3px;
+        }
+        .menu{
+            border: solid 2px red;
+            color: blue;
+            border: solid tan 3px;
+            display: block;
+        }
+       
+      
+        #header{
+            color: coral;
+            height: 120px;
+            border: solid teal 2px;
+            text-align: center;
+            
+            text-transform: uppercase;
+            position: relative;
+            display: block;
+        }
+       
+        .iconmenu{
+            position: absolute;    
+        }
+        #footer{
+            height: 120px;
+            clear: both;
+            background-color: slategray;
+        }
+        #footer p{
+            color: red;
+            background-color: royalblue;
+        }
+        .menu {
+            font-size: small;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #mid{
+            width: 100%;
+            background-color: beige;
+        }
+        #left{
+            width: 20%;
+            float: left;
+            border: solid 3px yellow;
+     
+        }
+        #left div div,li{
+            border: solid 2px red;
+            word-wrap:break-word; 
+            margin: 4px 4px;
+            border-radius: 5px;
+            padding-left: 10px;
+            list-style-position: inside;
+            list-style-type:georgian ;
+        }
+
+        
+        a:link{
+              color: blue;
+              text-decoration: none;  
+        }
+        a:Visited{
+                color: blue;
+
+        }
+        #left div div:hover,li:hover{
+            background-color: chartreuse;
+        }
+        #content{
+            width: 60%;
+            float: left;
+            border: solid 2px rgb(163, 149, 149);
+          
+        }
+        #right{
+            width: 20%;
+            float: right;
+
+            background-color: crimson;    
+        }
+       
+        .topmenu ul li:hover{
+            background-color: brown;
+        }
+        
+        
+    </style>
+    <script>
+        var bien=0;
+        function anmenu(){
+            //alert("acb");
+            if(bien%2==0)
+                document.getElementById("topmenu").style.display="none";
+            else    
+                document.getElementById("topmenu").style.display="block";
+            bien++;
+        }
+
+        function hienthimenu()
+        {
+
+           var i,s=""; 
+           var arr=["Trang chủ","Thông tin tuyển sinh", "Thông tin đào tạo","Liên hệ","thông tin liên hệ", "abc"];
+           for (i = 0; i < arr.length; i++){
+                s=s+"<div>"+ arr[i] +"</div>";
+            }
+            //document.write(s);
+            //console.log(s);
+            document.getElementById("hienthi").innerHTML=s;
+        }
+      
+    window.onload=function()
+    {
+        theloaimenu();
+    }    
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            
+            <p>nguyễn văn a</p>
+            <button id="demo" onclick="anmenu();"> Nhan</button>
+        </div>
+        <div id="topmenu" >
+            <ul>
+                <a href="#DemoCSS.html?chon=t&id=tc"><li> Trang chủ</li></a>
+                <a href="DemoCSS.html?chon=t&id=1""><li>Thông tin tuyển sinh</li></a>
+                <a href="DemoCSS.html?chon=t&id=2"><li>24h.com.vn</li></a>
+                <a href="mailto:someone@example.com?chon=t&id=3"><li>Send email</a></li>
+                <a href="#section2"><li>Go to Section 2</li></a>
+            </ul>
+        </div >
+        <div style="width: 100%; display: block; background-color: chartreuse;">
+            <div id="left">
+                <div style="border: blueviolet solid 2px; border-radius: 5px;">
+                    <a href="#"><div >Trang chủ</div></a>
+                    <a href="#"><div>Thông tin tuyển sinh</div> </a>
+                    <a href="#"><div>Thông tin đào tạo</div>   </a>
+                    <a href="#"><div>Liên hệ</div>   </a> 
+                </div>  
+               
+                <div style="border: blueviolet solid 2px; border-radius: 5px; margin-top: 10px;" id="hienthi">
+                    <script>
+                        hienthimenu();
+                    </script>
+
+                </div> 
+                <div id="javacriptmenu" style="border: blueviolet solid 2px; border-radius: 5px; margin-top: 10px;">
+                    
+                </div>
+            </div>
+            
+
+            </div>
+            <div id="content">
+                
+               <p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.</p>
+<p>"Whenever you feel like criticizing any one," he told me, "just remember that all the people in this world haven't had the advantages that you've had."</p>
+<p>He didn't say any more, but we've always been unusually communicative in a reserved way, and I understood that he meant a great deal more than that. In consequence, I'm inclined to reserve all judgments, a habit that has opened up many curious natures to me and also made me the victim of not a few veteran bores. The abnormal mind is quick to detect and attach itself to this quality when it appears in a normal person, and so it came about that in college I was unjustly accused of being a politician, because I was privy to the secret griefs of wild, unknown men. Most of the confidences were unsought-frequently I have feigned sleep, preoccupation, or a hostile levity when I realized by some unmistakable sign that an intimate revelation was quivering on the horizon; for the intimate revelations of young men, or at least the terms in which they express them, are usually plagiaristic and marred by obvious suppressions. Reserving judgments is a matter of infinite hope. I am still a little afraid of missing something if I forget that, as my father snobbishly suggested, and I snobbishly repeat, a sense of the fundamental decencies is parcelled out unequally at birth.</p>
+<p>And, after boasting this way of my tolerance, I come to the admission that it has a limit. Conduct may be founded on the hard rock or the wet marshes, but after a certain point I don't care what it's founded on. When I came back from the East last autumn I felt that I wanted the world to be in uniform and at a sort of moral attention forever; I wanted no more riotous excursions with privileged glimpses into the human heart. Only Gatsby, the man who gives his name to this book, was exempt from my reaction-Gatsby, who represented everything for which I have an unaffected scorn. If personality is an unbroken series of successful gestures, then there was something gorgeous about him, some heightened sensitivity to the promises of life, as if he were related to one of those intricate machines that register earthquakes ten thousand miles away. This responsiveness had nothing to do with that flabby impressionability which is dignified under the name of the "creative temperament"-it was an extraordinary gift for hope, a romantic readiness such as I have never found in any other person and which it is not likely I shall ever find again. No-Gatsby turned out all right at the end; it is what preyed on Gatsby, what foul dust floated in the wake of his dreams that temporarily closed out my interest in the abortive sorrows and short-winded elations of men.</p>
+                <h2 id="section2">Section 2</h2>
+                content</div>
+            <div id="right">right</div>
+        </div>
+        <div id="footer">footer
+            <p>nguyễn văn a</p>
+            <p>abc</p>
+            <script>        
+                function jumpto(anchor){
+                    window.location.href = "#"+anchor;
+                }
+            </script>
+            <button onclick=jumpto();> đầu trang</button>
+        </div>
+    </div>
+
+</body> 
+</html

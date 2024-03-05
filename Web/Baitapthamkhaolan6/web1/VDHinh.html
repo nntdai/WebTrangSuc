@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+.content{
+	border:solid #FF0000 3px;
+	width:25%;
+}
+.content img{
+	border:#0000FF solid 3px;
+	width:180px;
+	height:120px;
+}
+
+
+
+/*Hãy chú ý vào phần style cho .thumb . Trọng yếu của kỹ thuật này chính là sử dụng hai thuộc tính background-size  và background-position . Để làm cho ảnh nền tự resize vừa theo kích thước của thẻ div, ta dùng thuộc tính background-size  với giá trị là cover . Sau đó dùng background-position  với giá trị center  để căn giữa ảnh vào khung nhìn của thumbnail.
+
+Chú ý ở là trong đoạn css của .thumb , tôi đặt giá trị background-image  là none ? Do class .thumb  được dùng lại cho nhiều bản tin khác nhau, ta không thể set cứng cùng một hình ảnh được. Ta cần để lại phần set hình ảnh bằng cách nhúng trực tiếp trong code HTML. Sửa lại HTML như sau:   
+http://webfaver.com/client-side/css/cach-css-tu-dong-resize-anh-nen-theo-the-div.html
+
+*/
+.img-demo, .control {
+    margin-bottom: 10px;
+}
+.news{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    background-color: #e6e6e6;
+}
+.article {
+    width: 200px;
+    height: 220px;
+    display: inline-block;
+    padding: 5px;
+    margin-left: 10px;
+    vertical-align:top;
+}
+.thumb {
+    width: 200px;
+    height: 150px;
+    background-color: #3e3e3e;
+    background-image: none;
+    background-repeat: no-repeat;
+	/*su dung hai thuoc tinh nay de canh giua so voi div*/
+    background-position:center; 
+    background-size: cover;
+} 
+
+.hinh1{
+	width:180px;
+	height:120px;
+	background-image:url(img/3.jpg);
+}
+.hinh1:hover{
+	width:500px;
+	height:500px;
+	border:solid 3px #FF0000;
+	background:url(img/7.jpg);
+	
+}
+</style>
+<script>
+var img
+function thaydoikichthuomacdinh(yourimg)
+{
+	hinh=yourimg;
+	alert(yourimg.id);
+	console.log("Kich thuoc mac dinh:");
+	yourimg.style.width="180px";
+	yourimg.style.height="120px";
+	yourimg.src="img/1.jpg";
+}
+
+var hinh;
+function thaydoikichthuochinh(yourimg)
+{
+	alert(yourimg.id)
+	hinh=yourimg;
+	console.log(yourimg.width);
+	//alert(yourimg);
+	console.log("Kich thuoc thay doi");
+	yourimg.style.width="500px";
+	yourimg.style.height="500px";
+	
+	console.log(yourimg.width);
+	console.log(yourimg.height);
+	yourimg.src="img/16.jpg";
+	console.log(yourimg.src);
+}
+
+
+</script>
+</head>
+
+<body>
+<div class="img-demo">
+    <img width="250" src="http://i1.wp.com/webfaver.com/wp-content/uploads/2015/10/1377146863789.jpg?fit=600%2C600" alt="Doan Trang">
+    <img width="250" src="http://i1.wp.com/webfaver.com/wp-content/uploads/2015/10/phuong-trinh-jolie-007-012022549.jpg?fit=600%2C600"/>   
+</div>
+<img src="img/9.jpg" class="hinh1" id="hinhgiay" />
+<div class="news">
+    <div class="article">
+        <div class="thumb" style="background-image: url(http://i1.wp.com/webfaver.com/wp-content/uploads/2015/10/1377146863789.jpg?fit=600%2C600); background-size: auto auto; background-position:top left "></div>
+        <div class="title">Đoan Trang cười rạng rỡ!</div>
+    </div>
+    <div class="article">
+        <div class="thumb" style="background-image:url(http://i1.wp.com/webfaver.com/wp-content/uploads/2015/10/phuong-trinh-jolie-007-012022549.jpg?fit=600%2C600); background-size: cover; background-position: center center"></div>
+        
+    </div>
+</div>
+
+
+<img src="img/1.jpg" />
+
+<div class="hinh1">Hien thi background-image</div>
+<div class="content">
+	<div>Noi dung</div>
+	<div align="center" style="width:500px; heigth:500px"><img src="img/1.jpg" class="hinh" name="1" id="abcdef" onmouseover="thaydoikichthuochinh(this);" onmouseout="thaydoikichthuomacdinh(this);" /></div> 
+	<div>Ðon giá: 50,000d</div>
+	<div><input type="button" value="mua hàng" /> </div>
+</div>	
+</body>
+</html>

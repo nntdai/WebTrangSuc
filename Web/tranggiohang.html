@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        table{
+            border: solid 2px black;
+            font-family: Verdana;
+        }
+        th, td{
+            border: none;
+        }
+        #backhome{      /* QUAY TRỞ LẠI TRANG CHỦ */
+            border:none;
+            border-right: solid;
+            width: 50px; 
+            height: auto; 
+            margin: 10px 0 20px 0;
+            float: left;
+        }
+        #giohang{       /* BẢNG GIỎ HÀNG */
+            width: 100%;
+            margin-top: 15px;
+        }
+        .delete{        /* NÚT THÙNG RÁC */
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .Dien{          /* KHUNG ĐIỀN HỌ TÊN, SỐ ĐIỆN THOẠI, ĐỊA CHỈ */
+            width: 100%;
+            height: 30px;
+            margin:5px 0;
+            padding: 5px;
+            border: none;
+            border-bottom: solid 2px;
+            outline: none;
+            font-size:18px;
+        }
+        .ship{          /* PHƯƠNG THỨC THANH TOÁN */ 
+            width:17px;
+            height: 17px;
+            padding: 2px;
+        }
+        .thongtingiaohang{      /* CHỮ THÔNG TIN GIAO HÀNG */
+            display: flex;
+            justify-content: center;
+            margin:2px; 
+            padding:2px; 
+            height: auto
+        }
+        .pay{
+            width:17px;
+            height: 17px;
+            padding: 2px;
+        }
+        .khungtkthanhtoan{      /* KHUNG ĐIỀN SỐ TÀI KHOẢN TRONG PHƯƠNG THỨC TRẢ TIỀN BẰNG VÍ ĐIỆN TỬ */
+            border: none;
+            outline: none;
+            border-bottom: solid;
+            margin: 10px; 
+            padding:2px;
+            width: 40%;
+            font-size: 20px;
+            width: 80%;
+        }
+        .nutchonthanhtoan{      /* NÚT CHỌN THANH TOÁN QUA VÍ ĐIỆN TỬ NÀO (GOOGLE PAY HAY PAYPAL HAY VISA HAY MASTER CARD) */
+            width: 30px; 
+            height: auto; 
+            float: left; 
+            margin-left: 20px; 
+            margin-top: 12px
+        }
+        .nutchonptthanhtoan{        /* NÚT CHỌN PHƯƠNG THỨC THANH TOÁN NÀO (COD HAY WALLET) */
+            width: 30px; 
+            height: auto; 
+            float: left;
+        }
+        .payimg{        /* KHUNG CỦA MỖI VÍ ĐIỆN TỬ */
+            margin: 5px;
+            width: 100%;
+        }
+        .payimg img{
+            width: 50px; 
+            height: 50px; 
+        }
+        #nutgp{         /* NÚT HIỂN THỊ KHUNG ĐIỀN SỐ TÀI KHOẢN */
+
+        }
+        #nutpp, #nutvs, #nutmc{     /* NÚT HIỂN THỊ KHUNG ĐIỀN SỐ TÀI KHOẢN */
+            display: none;
+        }
+        #ptpay{         /* KHUNG HIỂN THỊ 4 VÍ ĐIỆN TỬ */
+            display: none;
+        }
+        #kiemtragp{
+
+        }
+        #kiemtrapp, #kiemtravs, #kiemtramc{     /* HIỂN THỊ KHUNG THÔNG BÁO ĐIỀN THÔNG TIN SỐ TÀI KHOẢN */
+            display: none;
+        }
+        #tamtinh, #phiship, #voucher{       /* PHẦN THANH TOÁN */
+            width: 105px;
+            height: 32px;
+            border: none;
+            font-size: 18px;
+            font-family: Verdana;
+            text-align: right;
+            margin:2px 4px 0;
+            float: right;
+        }
+        /* .khungtien{
+            
+        } */
+        #total{
+            width: 200px;
+            height: 32px;
+            font-family: Verdana;
+            font-size: 25px;
+            text-align: right;
+            margin-right: 5px;
+            float: right;
+        }
+        #btn{
+            background-color: white;
+            width: 45%; 
+            height: 45px; 
+            margin:10px 0 0 0; 
+            float: right;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 20px;
+            color: black;
+        }
+        #btn:hover{
+            transition: all 0.2s ease-in-out;
+            background-color: black;
+            color:white;
+        }
+    </style>
+    <script>
+        //LOCAL SẢN PHẨM--------------------------------------------------------------------------------------------------------------
+        var productlist = [];
+        function showproduct(){
+            productlist=JSON.parse(localStorage.getItem('name'));
+            var tab='<tr bgcolor="black"><th><font color="white">STT</font></th><th><font color="white">Hình Ảnh</font></th><th><font color="white">Tên Sản Phẩm</font></th><th><font color="white">Loại Sản Phẩm</font></th><th><font color="white">Kích Thước</font></th><th><font color="white">Giá</font></th><th><font color="white">Số lượng</font></th><th><font color="white">Xóa</font></th></tr>';
+            for(var i=0; i<productlist.length; i++){
+                tab+='<tr align="center"><td>'+(i+1)+'</td><td>'+productlist[i].images+'</td><td>'+productlist[i].name+'</td><td>'+productlist[i].classify+'</td><td>'+productlist[i].size+'</td><td>'+productlist[i].price+'</td><td>'+productlist[i].amount+'</td><td><button class="delete" onclick="deleteproduct(\''+productlist[i].name+'\')"><img src="images/bin.svg" id="bin" width="20px" height="20px"></button></td></tr>';
+            }
+            document.getElementById('giohang').innerHTML=tab;
+        }
+        var product;
+        function createProduct(){
+            productlist=JSON.parse(localStorage.getItem('name'));
+            product={images:document.getElementById('images').value, name:document.getElementById('name').value, classify: document.getElementById('classify').value, size:document.getElementById('size').value, price:document.getElementById('price').value, amount:document.getElementById('amount').value}
+            console.log(product.name);
+            productlist.push(product);
+            alert("Them san pham thanh cong");
+            localStorage.setItem('name', JSON.stringify(productlist));
+            showproduct();
+            tamtinh();
+            location.reload();
+        }
+        function deleteproduct(objproduct){
+            var productlist=JSON.parse(localStorage.getItem('name'));
+            for(var i=0; i<productlist.length; i++){
+                if(productlist[i].name==objproduct){
+                    if(confirm("Bạn chắc muốn xóa sản phẩm này chứ ?")){
+                        productlist.splice(i,1);
+                    }
+                }
+            }
+            localStorage.setItem('name', JSON.stringify(productlist));
+            showproduct();
+            tamtinh();
+            location.reload();
+        }
+        function Changeship(obj){
+            if(obj.value=='wallet'){
+                document.getElementById('ptpay').style.display='block';
+            }else{
+                document.getElementById('ptpay').style.display='none';
+            }
+        }
+
+        // THAY ĐỔI VÍ TIỀN---------------------------------------------------------------------------------------------
+
+        function Changewallet(obj){
+            //alert(obj.value);
+            switch(obj.value){
+                case 'googlepay':
+                    document.getElementById('nutgp').style.display='block';
+                    document.getElementById('nutpp').style.display='none';
+                    document.getElementById('nutvs').style.display='none';
+                    document.getElementById('nutmc').style.display='none';
+                    document.getElementById('kiemtragp').style.display='block';
+                    document.getElementById('kiemtrapp').style.display='none';
+                    document.getElementById('kiemtravs').style.display='none';
+                    document.getElementById('kiemtramc').style.display='none';
+                    break;
+                case 'paypal':
+                    document.getElementById('nutpp').style.display='block';
+                    document.getElementById('nutgp').style.display='none';
+                    document.getElementById('nutvs').style.display='none';
+                    document.getElementById('nutmc').style.display='none';
+                    document.getElementById('kiemtragp').style.display='none';
+                    document.getElementById('kiemtrapp').style.display='block';
+                    document.getElementById('kiemtravs').style.display='none';
+                    document.getElementById('kiemtramc').style.display='none';
+                    break;
+                case 'visa':
+                    document.getElementById('nutvs').style.display='block';
+                    document.getElementById('nutpp').style.display='none';
+                    document.getElementById('nutgp').style.display='none';
+                    document.getElementById('nutmc').style.display='none';
+                    document.getElementById('kiemtragp').style.display='none';
+                    document.getElementById('kiemtrapp').style.display='none';
+                    document.getElementById('kiemtravs').style.display='block';
+                    document.getElementById('kiemtramc').style.display='none';
+                    break;
+                case 'mastercard':
+                    document.getElementById('nutmc').style.display='block';
+                    document.getElementById('nutpp').style.display='none';
+                    document.getElementById('nutvs').style.display='none';
+                    document.getElementById('nutgp').style.display='none';
+                    document.getElementById('kiemtragp').style.display='none';
+                    document.getElementById('kiemtrapp').style.display='none';
+                    document.getElementById('kiemtravs').style.display='none';
+                    document.getElementById('kiemtramc').style.display='block';
+                    break;
+                default: break;
+            }
+        }
+
+        // KIỂM TRA ĐIỀN THÔNG TIN------------------------------------------------------------------------------
+
+        function kthoten(){
+            const checkname=document.khungdien.hoten;
+            let Errorname=document.getElementById("kiemtrahoten");
+            let namevalue=checkname.value;
+            var inner;
+            // alert(namevalue);
+            if(namevalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần họ và tên không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần họ và tên được chấp nhập !</font>';
+            }
+            Errorname.innerHTML=inner;
+        }
+        function demsdt(n){
+            var count=0;
+            while((n/10)>=1){
+                n=n/10;
+                ++count;
+            }
+            if(n>=1) ++count;
+            return count;
+        }
+        function ktsdt(){
+            const checksdt=document.khungdien.sdt;
+            let Errorsdt=document.getElementById("kiemtrasdt");
+            let sdtvalue=checksdt.value;
+            var kitu=String(Number(sdtvalue));
+            var inner;
+            if(sdtvalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần số điện thoại không được để trống !</font>';
+            }else if(demsdt(sdtvalue)!=9){
+                inner='<font size="3px" face="Verdana" color="red">Phần số điện thoại không đúng !</font>';
+            }else if(kitu=="NaN"){
+                inner='<font size="3px" face="Verdana" color="red">Phần số điện thoại không chứa kí tự !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần số điện thoại được chấp nhập !</font>';
+            }
+            Errorsdt.innerHTML=inner;
+        }
+        function ktdiachi(){
+            const checkdiachi=document.khungdien.diachi;
+            let Errordiachi=document.getElementById("kiemtradiachi");
+            let diachivalue=checkdiachi.value;
+            var inner;
+            // alert(namevalue);
+            if(diachivalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần địa chỉ không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần địa chỉ được chấp nhập !</font>';
+            }
+            Errordiachi.innerHTML=inner;
+        }
+        function ktgooglepay(){
+            const checkgp=document.thanhtoan.gpay;
+            let Errorgp=document.getElementById("kiemtragp");
+            let gpvalue=checkgp.value;
+            var inner;
+            if(gpvalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần số tài khoản Google Pay không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần số tài khoản Google Pay được chấp nhập !</font>';
+            }
+            Errorgp.innerHTML=inner;
+        }
+        function ktpaypal(){
+            const checkpp=document.thanhtoan.pp;
+            let Errorpp=document.getElementById("kiemtrapp");
+            let ppvalue=checkpp.value;
+            var inner;
+            if(ppvalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần số tài khoản PayPal không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần số tài khoản PayPal được chấp nhập !</font>';
+            }
+            Errorpp.innerHTML=inner;
+        }
+        function ktvisa(){
+            const checkvs=document.thanhtoan.vs;
+            let Errorvs=document.getElementById("kiemtravs");
+            let vsvalue=checkvs.value;
+            var inner;
+            if(vsvalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần số tài khoản Visa không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần số tài khoản Visa được chấp nhập !</font>';
+            }
+            Errorvs.innerHTML=inner;
+        }
+        function ktmastercard(){
+            const checkmc=document.thanhtoan.mc;
+            let Errormc=document.getElementById("kiemtramc");
+            let mcvalue=checkmc.value;
+            var inner;
+            if(mcvalue==""){
+                inner='<font size="3px" face="Verdana" color="red">Phần số tài khoản Master Card không được để trống !</font>';
+            }else{
+                inner='<font size="3px" face="Verdana" color="green">Phần số tài khoản Master Card được chấp nhập !</font>';
+            }
+            Errormc.innerHTML=inner;
+        }
+        // PHẦN TÍNH TIỀN------------------------------------------------------------------------------------------------
+
+        function tamtinh(){
+            productlist=JSON.parse(localStorage.getItem('name'));
+            let sotientamtinh=document.getElementById("tamtinh");
+            var sotientam=0;
+            for(var i=0; i<productlist.length; i++){
+                sotientam=sotientam+Number(productlist[i].price);
+                // alert(productlist[i].price);
+                // alert(sotientam);
+            }
+            sotientamtinh.innerHTML=String(Number(sotientam));
+            return sotientam;
+        }
+        function phiship(){
+            let phiship=document.getElementById("phiship");
+            var sotienship=25000;
+            phiship.innerHTML=sotienship;
+            return sotienship;
+        }
+        function voucher(){
+            let voucher=document.getElementById("voucher");
+            var sotienvoucher=15000;
+            voucher.innerHTML=sotienvoucher;
+            return sotienvoucher;
+        }
+        function total(){
+            let total=document.getElementById("total");
+            var tongtien=Number(tamtinh())+Number(phiship())-Number(voucher());
+            total.innerHTML=tongtien;
+            // 
+        }
+        $(document).on('click', '#btn', function(e) {
+			swal(
+				'<font face="Verdana" color="black">Đặt hàng thành công</font>',
+				'<font face="Verdana" color="black">Cám ơn bạn đã tin tưởng đặt hàng bên chúng mình, chúng mình sẽ giao cho bạn trong thời gian sớm nhất !</font>',
+				'success'
+			)
+		});
+    </script>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            //alert("Vao gio hang thanh cong");
+            tamtinh();
+            phiship();
+            voucher();
+            total();
+            showproduct();
+        }
+    </script>
+    <div style="width: 100%; background-color: white; height: auto">
+        <a href="#" style="text-decoration: none">
+            <div id="backhome">                    <!--  QUAY VỀ TRANG CHỦ -->
+                <img src="images/arrow-left.svg" width="50px" height="50px">
+                <!-- <center><font size="3px" face="Verdana" color="black">Quay trở lại trang chủ</font></center> -->
+            </div>
+        </a>
+        <div style="float:left; width: auto; height:auto; padding: 20px">
+            <font size="5px" face="Verdana" color="black">Giỏ hàng & Thanh toán</font>
+        </div>
+
+        <!--  TRANG GIỎ HÀNG -->
+
+        <table id="giohang">
+
+        </table>
+        <input type="text" value="" id="images" placeholder="Hình ảnh"/>
+        <input type="text" value="" id="name" placeholder="tên sp"/>
+        <input type="text" value="" id="classify" placeholder="loại sp"/>
+        <input type="text" value="" id="size" placeholder="kích thước"/>
+        <input type="text" value="" id="price" placeholder="giá"/>
+        <input type="text" value="" id="amount" placeholder="số lượng"/>
+        <button id="show" onclick="createProduct()">Thêm sp</button>
+
+        <!--  THÔNG TIN GIAO HÀNG -->
+
+        <div style="border:solid 2px; width: 50%; height: auto; margin:10px 0 10px 0; padding: 10px; float: left">
+            <div class="thongtingiaohang">
+                <center><img src="images/delivery-truck (1).svg" width="35px" height="35px" style="float: left; margin-right: 10px"></center>
+                <font size="5px" face="Verdana" color="black">Thông tin giao hàng</font>
+            </div>
+            <form action="#" method="get" name="khungdien">
+
+                <!--  HỌ TÊN  -->
+
+                <div style="margin:5px 5px 2px 5px">
+                    <font size="4px" face="Verdana" color="black">Họ và tên:</font>
+                    <input type="text" value="" class="Dien" name="hoten" onblur="kthoten()" />
+                </div>
+                <div id="kiemtrahoten" style="height: auto; margin: 2px 0 2px 5px"></div>
+
+                <!--  SỐ ĐIỆN THOẠI  -->
+
+                <div style="margin:5px 5px 2px 5px">
+                    <font size="4px" face="Verdana" color="black">Số điện thoại:</font>
+                    <input type="text" value="" class="Dien" name="sdt" onblur="ktsdt()"/>
+                </div>
+                <div id="kiemtrasdt" style="height: auto; margin: 2px 0 2px 5px"></div>
+
+                <!--  ĐỊA CHỈ  -->
+
+                <div style="margin:5px 5px 2px 5px">
+                    <font size="4px" face="Verdana" color="black">Địa chỉ:</font>
+                    <input type="text" value="" class="Dien" name="diachi" onblur="ktdiachi()"/>
+                </div>
+                <div id="kiemtradiachi" style="height: auto; margin: 2px 0 2px 5px"></div>
+            </form>
+
+            <!--  PHƯƠNG THỨC THANH TOÁN  -->
+
+            <form action="#" method="get" name="thanhtoan">
+                <div style="margin:5px">
+                    <font size="4px" face="Verdana" color="black">Phương thức thanh toán:</font>
+                    <div style="margin:5px">
+                        <div class="nutchonptthanhtoan">
+                            <input type="radio" name ="chonthanhtoan" value="cod" class="ship" checked="checked" onclick="Changeship(this)">
+                        </div>
+                        <font size="4px" face="Verdana" color="black">Thanh toán khi nhận hàng</font>
+                    </div>
+                    <div style="margin:5px">
+                        <div class="nutchonptthanhtoan">
+                            <input type="radio" name ="chonthanhtoan" value="wallet" class="ship" onclick="Changeship(this)">
+                        </div>
+                        <font size="4px" face="Verdana" color="black">Thanh toán qua ví điện tử</font>
+                    </div>
+
+                    <!--  PHƯƠNG THỨC TRẢ TIỀN BẰNG VÍ ĐIỆN TỬ  -->
+
+                    <div id="ptpay">
+                        <div class="payimg">
+                            <div class="nutchonthanhtoan"><input type="radio" name ="thanhtoan" value="googlepay" checked="checked" class="pay" onclick="Changewallet(this)"/></div>
+                            <img src="images/google-pay (3).svg"> <!--  GOOGLE PAY  -->
+                            <div id='nutgp'><input type="text" name="gpay" value="" class="khungtkthanhtoan" placeholder="Nhập số tài khoản" onblur="ktgooglepay()"/></div>
+                            <div id="kiemtragp" style="height: auto; margin: 2px 0 2px 5px"></div>
+                        </div>
+                        <div class="payimg">
+                            <div class="nutchonthanhtoan"><input type="radio" name ="thanhtoan" value="paypal" class="pay" onclick="Changewallet(this)"/></div>
+                            <img src="images/paypal (2).svg"> <!--  PAYPAL  -->
+                            <div id="nutpp"><input type="text" name="pp" value="" class="khungtkthanhtoan" placeholder="Nhập số tài khoản" onblur="ktpaypal()" /></div>
+                            <div id="kiemtrapp" style="height: auto; margin: 2px 0 2px 5px"></div>
+                        </div>
+                        <div class="payimg">
+                            <div class="nutchonthanhtoan"><input type="radio" name ="thanhtoan" value="visa" class="pay" onclick="Changewallet(this)"></div>
+                            <img src="images/visaship2.svg"> <!--  VISA   -->
+                            <div id="nutvs"><input type="text" name="vs" value="" class="khungtkthanhtoan" placeholder="Nhập số tài khoản" onblur="ktvisa()" /></div>
+                            <div id="kiemtravs" style="height: auto; margin: 2px 0 2px 5px"></div>
+                        </div>
+                        <div class="payimg">
+                            <div class="nutchonthanhtoan"><input type="radio" name ="thanhtoan" value="mastercard" class="pay" onclick="Changewallet(this)"></div>
+                            <img src="images/mastercard (1).svg"> <!--  MASTER CARD  -->
+                            <div id="nutmc"><input type="text" name="mc" value="" class="khungtkthanhtoan" placeholder="Nhập số tài khoản" onblur="ktmastercard()" /></div>
+                            <div id="kiemtramc" style="height: auto; margin: 2px 0 2px 5px"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--  PHẦN TÍNH TIỀN -->
+
+        <form action="#" method="get" name="form2">
+        <div style="border:solid 2px; width: 45%; height: auto; margin:10px 0 10px 0; float: right">
+
+            <!--  TẠM TÍNH  -->
+
+            <div style="height:36px">
+                <div style="margin: 5px 0 0 5px; float: left">
+                    <font size="3px" face="Verdana" color="black">Tạm Tính :</font>
+                </div>
+                <div id="tamtinh"></div>
+            </div>
+
+            <!--  PHÍ SHIP -->
+
+            <div style="height:36px">
+                <div style="margin: 5px 0 0 5px; float: left">
+                    <font size="3px" face="Verdana" color="black">Phí Ship :</font>
+                </div>
+                <div id="phiship"></div>
+            </div>
+
+            <!--  VOUCHER  -->
+
+            <div style="height:36px">
+                <div style="margin: 5px 0 0 5px; float: left">
+                    <font size="3px" face="Verdana" color="black">Voucher :</font>
+                </div>
+                <div id="voucher"></div>
+            </div>
+
+            <!--  TỔNG TIỀN  -->
+
+            <div style="height:60px">
+                <hr style="border: solid 1px">
+                <div style="margin-left: 5px; float:left">
+                    <font size="5px" face="Verdana" color="black">Tổng Tiền :</font>
+                </div>
+                <div id="total"></div>
+            </div>
+        </div>
+        </form>
+
+        <!--  NÚT ĐẶT HÀNG -->
+        
+        <button id="btn" onclick="">
+            <font face="Verdana">Đặt hàng</font>
+        </button>
+    </div>
+</body>
+</html>

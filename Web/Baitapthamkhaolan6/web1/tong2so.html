@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Untitled Document</title>
+<script src="js/javascript.js"></script>
+<script>
+	alert("chao mung ban học ja");
+	var a=5;
+	var s="";
+
+
+function tinh()
+{
+	var formname,soa,sob,kq;
+	formname=document.frmtinhtoancb;
+	soa=formname.txtsoa.value;
+	sob=formname.txtsob.value;
+	kq=soa+sob;
+
+	
+	alert("Ket qua truoc khi su dung partInt: "+kq);
+	// l�c n�y k?t qu? xu?t hi?n ? d?ng c�ng chu?i s? dung h�m partint d? �p sang ki?u s?
+	kq=parseInt(soa)+parseInt(sob);
+	formname.txtketqua.value=kq;
+	alert("Ket qua sau khi su dung partInt:"+kq);
+}
+tinh();
+function tinh1(soa, soab)
+{
+	/*
+	var a,b,kq;
+	formname=document.frmtinhtoancb;
+	a=soa.value;
+	b=sob.value;
+	kq=parseInt(a)+parseInt(b);
+	formname.txtketqua.value=kq;
+	*/
+
+	if(soa.value)
+	var doituongtxta=document.frmtinhtoancb.txtsoa;
+	var giatrisoa;
+	if(doituongtxta.value=="")
+	{	
+		alert("Nhap vào sô a");
+		doituongtxta.focus();
+		giatrisoa=parseIntdoituongtxta.value;
+
+	}
+
+	//var doituongtxtb=document.frmtinhtoancb.txtsob;
+	//var giatrisob=doituongtxtb.value;
+	//var c=parseInt(giatrisoa)+parseInt(giatrisob);
+	//document.frmtinhtoancb.txtketqua.value=c;
+	//alert("Gia trị c=" + c);
+}
+function layid()
+{
+	var soa=document.getElementById("soa");
+	console.log("đối tượng a:" +soa);
+}
+function tinh_laytheoid(soa, sob)
+{
+	var a,b,kq;
+	//formname=document.frmtinhtoancb;
+	a=soa.value;
+	b=sob.value;
+	kq=parseInt(a)+parseInt(b);
+	formname.txtketqua.value=kq;
+
+}
+
+function Cong()
+{
+	//alert("đangthực hiện phép cộng");
+	var doituongsoa=document.frmtinhtoancb.txtsoa;
+	var giatrisoa=doituongsoa.value;
+	var doituongsob=document.frmtinhtoancb.txtsob;
+	var giatrisob=doituongsob.value;
+	var kq=parseFloat(giatrisoa) +parseFloat(giatrisob);
+	//alert("Ketqua:"+kq);
+	document.frmtinhtoancb.txtketqua.value=kq;
+	//alert("giatrisoa:" + giatrisoa);
+	//console.log("giatrisoa:"+ giatrisoa);
+
+/*
+	var doituongsoa=document.frmtinhtoancb.txtsoa;
+	var giatrisoa=doituongsoa.value;
+	var doituongsob=document.frmtinhtoancb.txtsob;
+	var giatrisob=doituongsob.value;
+	var ketqua=parseInt(giatrisoa)+ parseInt(giatrisob);
+	document.frmtinhtoancb.txtketqua.value=ketqua;
+	alert("ket quả:" + ketqua);
+	//var doituongselect=document.getElementById("idselect");
+	//alert("đối tượng select"+ doituongselect.value);
+	*/
+}
+
+function CongC1()
+{
+	
+	//alert("gia trị a:" +dta.value);
+
+	var dta=document.getElementById("soa");
+	var dtb=document.getElementById("sob");
+	if(dta.value=="")
+	{
+		alert("Giá trị a rỗng nhập lại");
+		soa.focus();
+		return false;
+	}
+	else if(dtb.value=="")
+	{
+		alert("Giá trị b rỗng nhập lại");
+		sob.focus();
+		return false;
+	}
+	var gta=parseFloat(dta.value);
+	var gtb=parseFloat(dtb.value);
+	var pt=document.getElementById("idselect");
+	switch(pt.value)
+	{
+		case '+':
+			ketqua=gta+gtb;
+			break;
+		case '-':
+			ketqua=gta-gtb;
+			break;
+		case '*':
+			ketqua=gta*gtb;
+			break;
+		case '/':
+			ketqua=gta/gtb;
+			break;
+	}
+	//var ketqua=dta.value+dtb.value;
+	document.frmtinhtoancb.txtketqua.value=ketqua;
+
+}
+function CongC2(dta, dtb)
+{
+		//var doituonga=document.getElementById("soa");
+		//var giatria=doituonga.value;
+		//var doituongb=document.getElementById("sob");
+		//var giatrib=doituongb.value;
+		var giatria=dta.value;
+
+		var kq  = parseFloat(giatria) + parseFloat(giatrib);
+
+		alert("Ket qua:" + kq);
+
+}
+function  Demo2()
+{
+	//alert("Demo 2");
+	var dta=document.getElementById("soa");
+	//alert("Truy xuat theo id:"+dta.value);
+
+
+	var doituongsoa=document.frmtinhtoancb.txtsoa;
+	//alert(doituongsoa.value);
+	console.log("doituongsoa.value:"+doituongsoa.value);
+	var doituongsob=document.frmtinhtoancb.txtsob;
+	var kq;
+	if(doituongsoa.value=="")
+	{
+		alert("Nhap vao so a:");
+		doituongsoa.focus();
+		return false;
+	}
+	else if (doituongsoa.value.length>5)
+	{
+		alert("Lơn hơn 5");
+		doituongsoa.focus();
+		return false;
+	}
+	else if(doituongsob.value=="")
+	{
+		alert("Nhap vao so b:");
+		doituongsob.focus();
+		return false;
+	}
+	kq=parseFloat(doituongsoa.value)+ parseFloat(doituongsob.value);
+
+	//alert(kq);
+	document.frmtinhtoancb.txtketqua.value=kq;
+	document.getElementById("tenID").innerHTML
+}
+function Hello(obj)
+{
+	//alert(obj.value);
+	//alert("Hello");
+	//var s=
+	document.getElementById('hienthi').innerHTML="<div>chao bạn</div>"
+}
+</script>
+
+
+
+</head>
+<body>
+	<script>
+		//alert("Noi dung body");		
+	</script>
+<form name="frmtinhtoancb" action="trang1.html" method="">
+	<div>
+<label >sÔ A</label>><input type="text" value="" name="txtsoa" id="soa"  autofocus  />
+SoB <input type="text" value="" name="txtsob" id="sob" />
+KQ  <input type="text" value="" name="txtketqua" id="ketqua"  />
+
+Phep tinh <select name="selectpheptinh" id="idselect" onchange="CongC1();" >
+	<option value="+" >Cộng</option>
+	<option value="-" selected="selected">Trừ</option>
+	<option value="*">NHân</option>
+	<option value="/">Chia</option>
+</select>
+
+<input type="button" name="btncong" value="Cộng" onclick="Cong();" />
+<input type="button" name="btncong1" value="Công C2" onclick="CongC1(document.frmtinhtoancb.txtsoa.value,document.frmtinhtoancb.txtsob.value);" />
+<input type="button" onclick="CongC2(document.getElementById('soa'),document.getElementById('sob'));" value="Cộng cách 2" />
+<p id="hienthi"></p>
+<input type="button" btn onclick="Hello();" value="Hiển thị nội dung">
+</div>
+</form> 
+</body>
+</html>

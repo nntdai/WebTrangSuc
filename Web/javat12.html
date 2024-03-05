@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function changeCheckBox(cboSoThich){
+            var sSoThich=cboSoThich.value;
+            var s;
+            switch(sSoThich){
+                case 'boi_loi': s=phatSinhCBBL(); break;
+                case 'vo_thuat': s=phatSinhCBVT(); break;
+                default: s=''; break;
+            }
+            var objCheckBoxHTML=document.getElementById("CheckBoxHTML");
+            objCheckBoxHTML.innerHTML=s;
+        }
+        function phatSinhCBBL(){
+            var kq='<input name="chk1" type="checkbox" value="Buom">Bơi bướm'+'<input name="chk2" type="checkbox" value="Sai">Bơi sải'+'<input name="chk3" type="checkbox" value="Cho">Bơi chó';
+            return kq;
+        }
+        function phatSinhCBVT(){
+            var kq='<input name="chk1" type="checkbox" value="karate">Karate'+'<input name="chk2" type="checkbox" value="judo">Judo';
+            return kq;
+        }
+        function changeForRadio(objRadio){
+            //alert(objRadio.value)
+            var choncauhoi=document.form1.choncauhoi;
+            var txCauHoi=document.form1.txCauHoi;
+            switch(objRadio.value){
+                case 'chon':
+                    choncauhoi.disabled=false;
+                    txCauHoi.readOnly=true;
+                    choncauhoi.focus();
+                    break;
+                case 'nhap':
+                    choncauhoi.disabled=true;
+                    txCauHoi.readOnly=false;
+                    txCauHoi.focus();
+                    txCauHoi.select();
+                    break;
+                default: break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="get" name="form1">
+        Sở thích
+        <select name="cboSoThich" onchange="changeCheckBox(this)">
+            <option value="">Chọn sở thích</option>
+            <option value="boi_loi">Bơi lội</option>
+            <option value="vo_thuat">Võ thuật</option>
+        </select>
+        <div id="CheckBoxHTML">
+
+        </div>
+        <input name="rdTraLoi" type="radio" value="chon" checked="checked" onclick="changeForRadio(this)"/>
+        Chọn câu hỏi
+        <input name="rdTraLoi" type="radio" value="nhap" onclick="changeForRadio(this)"/> Nhập câu hỏi</br>
+        Câu hỏi
+        <select name="choncauhoi">
+            <option value="-1">Chọn câu hỏi</option>
+            <option value="1">Câu hỏi 1</option>
+            <option value="2">Câu hỏi 2</option>
+        </select>
+        <input name="txCauHoi" type="text" value="Nhập câu hỏi" readonly="readonly"/>
+    </form>
+</body>
+</html>

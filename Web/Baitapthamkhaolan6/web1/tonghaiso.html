@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script src="js/javascript.js" type="text/javascript">
+</script>
+
+<script>
+	
+	function cach1()
+	{	alert("Ban dang su dung cach 1");
+		var soa,sob,ketqua, pt;
+		
+		pt=document.getElementById('idselect');
+		
+		soa=document.getElementById('soa').value;
+		sob=document.getElementById('sob').value;
+		ketqua=soa+sob;
+		document.getElementById('ketqua').value=ketqua;
+
+	}
+	function select_cach1(pheptinh)
+	{	//var pheptinh=document.getElementById("idselect").value;
+		alert(pheptinh.value);
+		/*
+		alert("Ban dang chon phep tính:" +pheptinh);
+		var kq;
+		switch(pheptinh)
+		{
+			case '+':
+				kq=document.getElementById('soa').value+ocument.getElementById('sob').value;
+				break;
+			case '-':
+				kq=document.getElementById('soa').value-ocument.getElementById('sob').value;
+				break;
+
+			document.getElementById('ketqua').value=kq;
+		}*/value
+		/*
+		var soa,sob,ketqua, pt;
+		alert(obj.value);
+		console.log(obj.value);
+		pt=document.getElementById('idselect');
+		
+		soa=document.getElementById('soa').value;
+		sob=document.getElementById('sob').value;
+		ketqua=soa+sob;
+		document.getElementById('ketqua').value=ketqua;
+		*/
+	}
+	function cach2()
+	{
+		
+		var a,b,kq;
+		formname=document.frmtinhtoancb;
+		a=formname.txtsoa.value;
+		b=formname.txtsob.value;
+		kq=parseInt(a)+parseInt(b);
+		formname.txtketqua.value=kq;
+		
+	}
+	alert("abc");
+	cach2();
+	//alert(document.getElementById('soa').value);
+</script>
+</head>
+
+<body>
+<script>
+	alert("chao bạn");
+</script>
+
+<form name="frmtinhtoancb" action="tonghaiso.html" method="get">
+So A<input type="" value="" name="txtsoa" id="soa" />
+SoB <input type="text" value="" name="txtsob" id="sob" />
+Phep tinh <select name="select" id="idselect" onchange="select_cach1(this);" >
+	<option value="+" >Công</option>
+	<option value="-" selected="selected">Trừ</option>
+	<option value="*">Nhân</option>
+	<option value="/">Chia</option>
+</select>
+KQ  <input type="text" value="" name="txtketqua" id="ketqua"  />
+
+<input type="button" value="ket qua"  onclick="cach1();"  name="btnkq"/>
+<input type="button" value="C�ch 2"  onclick="cach2();" name=""btncach2 />
+
+
+</form>
+</body>
+</html>

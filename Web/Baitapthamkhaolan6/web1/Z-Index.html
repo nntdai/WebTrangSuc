@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+.right{
+		list-style-type: none;
+		display: table;
+		margin-left: auto;
+		background-color:#330033;
+		float:right;
+		margin-top:40px;
+	}
+	
+	img{
+		width:50px;
+		height:50px;
+	}
+	img:hover{
+		background-color:#CC6600;	
+	}
+</style>
+<script>
+var user=0;
+var giohang=0;
+function thaydoiuser()
+{
+	user++;
+	if(user%2==0)
+	{	document.getElementById("divuser").style.display="none";
+		document.getElementById("divgiohang").style.display="none";
+		
+	}
+	else
+	{	
+		document.getElementById("divuser").style.display="block";
+		document.getElementById("divgiohang").style.display="none";
+
+	}	
+}
+function thaydoigiohang()
+{
+	giohang++;
+	if(giohang%2==0)
+	{	document.getElementById("divgiohang").style.display="none";
+		document.getElementById("divuser").style.display="none";
+	}
+	else
+	{	
+		document.getElementById("divgiohang").style.display="block";
+		document.getElementById("divuser").style.display="none";
+	}	
+}
+function layTagName()
+{
+	var x=document.getElementsByTagName("p");
+	//x[0].innerHTML;
+	console.log(x);
+	var s="";
+	//console.log(x[0].innerHTML);
+	for(i=0;i<x.length; i++)
+	{	s+=x[i].innerText + "<br />";
+		alert(s);
+	}
+	document.getElementById("hienthi").innerHTML=s;
+}
+function layClassName()
+{
+	var x=document.getElementsByClassName("a");
+	console.log(x);
+	for(i=0;i<x.length;i++)
+		x[i].style.background="red";
+	
+}
+function sudungqueryselector()
+{
+	var x=document.querySelector("p");
+	console.log(x);
+	document.getElementById("hienthi").innerHTML=x.innerHTML;
+}
+</script>
+</head>
+<p class="a">chao ban a</p>
+<p class="a">chao ban b</p>
+<p>chao ban c</p>
+<p>chao ban d</p>
+<body leftmargin="0px" rightmargin="0px" topmargin="0px">
+<div style="width:100%; height:40px; background-color:red; position:fixed; z-index:100">
+<div style="float:right; position:absolute; height:40px; width: 62px;">
+  <ul class="right"><li><img id="user" src="images/icon/user .jpg" onclick="thaydoiuser();"></li><li><img id="giohang" src="images/icon/giohang.png" onclick="thaydoigiohang();"></li><li><img id="tiemkiem" src="images/icon/timkiem.png"></li></ul></div>
+  <a onclick="layTagName();" href="#">document.getElementsByTagName -> the p</a><br />	
+  <a onclick="layClassName();" href="#">document.getElementsByClassName -> lay class co ten a</a>
+  <button onclick="sudungqueryselector();">Sử dụng Querylector</button>
+</div>
+<div style="width:90%;height:1000px; background-color:#0000FF; position:relative; left:0px; top:40px; margin:auto">
+	<div id="divgiohang" style="background-color:green; width:50%; height:300px; z-index:1000; top:150px; left:150px; position:absolute">Gi&#7887; hàng </div>
+	<div id="divuser" style="background-color:#FF00FF; width:60%; height:300px; position:absolute; z-index:20; top:0px; left:150px">User </div>
+	<div id="hienthi">NOI HIEN THI NOI DUNG</div>
+	<div style="clear:both"></div>
+</div>
+</body>
+</html>

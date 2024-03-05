@@ -1,0 +1,16 @@
+/* CSS Document */
+
+.header{
+	width:100%; 
+	height:150px; 
+	background-color:#333300; 
+	text-align:center; 
+	line-height:150px; 
+	font-size:36px; 
+	color:#FFFFFF
+}
+.leftmenu{
+	float:left; 
+	width:20%; 
+	background-color:#339933
+}

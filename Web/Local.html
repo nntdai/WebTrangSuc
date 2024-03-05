@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: solid 3px black;
+        }
+        th,td{
+            border: solid 2px black;
+        }
+    </style>
+    <script>
+        function createAdmin(){
+            var userArray=[];
+            var bien="khachhang";
+            if(localStorage.getItem('user')==null){
+                //alert("admin");
+                var user1={username:'admin', password:'admin', fullname:'Admin', datesignup:'23-11-1999', usertype:'admin'};
+                var user2={username: bien, password:'123', fullname:''}
+                userArray.push(user1);
+                userArray.push(user2);
+                console.log(userArray);
+                localStorage.setItem('user', JSON.stringify(userArray));
+            }
+        }
+        function showUserList(){
+            //alert("hien");
+            if(localStorage.getItem('user')===null){
+                return false;
+            }
+            var userArray = JSON.parse(localStorage.getItem('user'));
+            var tr='<tr><th>STT</th><th>Tên đầy đủ</th><th>Tên đăng nhập</th><th>Mật khẩu</th><th>Ngày đăng kí</th><th>Xóa</th></tr>';
+            for(var i=0; i<userArray.length; i++){
+                tr+='<tr><td>'+(i+1)+'</td><td>'+userArray[i].fullname+'</td><td>'+userArray[i].username+'</td><td>'+userArray[i].password+'</td><td>'+ userArray[i].datesignup +'</td><td><button class="delete" onClick="deleteuser(\''+userArray[i].username+'\')">&times;</button></td></tr>';
+            }
+            document.getElementById('userlist').innerHTML=tr
+        }
+        function deleteuser(obj){
+            var userArray=JSON.parse(localStorage.getItem('user'));
+            for(var i=0; i<userArray.length; i++){
+                if(userArray[i].username==obj){
+                    userArray.splice(i,1);
+                }
+            }
+            localStorage.setItem('user', JSON.stringify(userArray));
+            showUserList();
+        }
+
+        var user1;
+        function createnewuser(){
+            userArray=JSON.parse(localStorage.getItem('user'));
+            var today=new Date();
+            var date=today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            user1={username:document.getElementById("user").value, password:document.getElementById("pass").value, fullname:document.getElementById("name").value, datesignup:date};
+            console.log(user1.username);
+            userArray.push(user1);
+            alert("dang ki thanh cong");
+            localStorage.setItem('user', JSON.stringify(userArray));
+            showUserList();
+        }
+        function searchuser(){
+            
+        }
+    </script>
+</head>
+<body>
+    <script>
+        window.onload=function()
+        {
+            //alert("hien thi thanh cong");
+            createAdmin();
+            showUserList();
+            //createProduct();
+            
+        }
+        
+        
+    </script>
+    <table id="userlist">
+
+    </table>
+    <button id="showuser" onclick="createnewuser()">Thêm user</button>
+    <input type="text" value="" name="txtname" id="name" placeholder="Mời nhập họ và tên"/>
+    <input type="text" value="" name="txtuser" id="user" placeholder="Mời nhập username"/>
+    <input type="text" value="" name="txtpass" id="pass" placeholder="Mời nhập password"/>
+    <button value="Tim kiem" name="btnlogin" >Tìm kiếm</button>
+</body>
+</html>

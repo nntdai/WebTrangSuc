@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="gui.css">
+    <script defer src="Product.js"></script>
+    <script src="https://kit.fontawesome.com/ce0303e136.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="nav">
+        <button onclick="topFunction()" id="TopUpButton" title="Go to top">Top</button>
+
+        <!-- header -->
+        <div id = "header"> 
+            <img class = "Shop_Logo" src="images/logo2.jpg">
+            <img class = "Cart" src="images/Cart.png" onclick = "OpenCart()" >
+        </div>
+        
+        <!-- menu bar -->
+            <div class = "menubar">
+                <ul>
+                    <li><a href="#Home"><b>HOME</b></a></li>
+                    <li><a href="#News"><b>NEWS</b></a></li>
+                    <li><a href="#Product" onclick = "OpenProduct()"><b>PRODUCT</b></a></li>
+                    <li><a href="#Support"><b>SUPPORT</b></a></li>
+                        <button type="search" onclick = "Search(0)">Search</button>
+                        <input type="text" placeholder="Enter product name..."  id = "ProductNameSearch" >
+                </ul>
+                </div>
+            </div>
+        
+            <!-- Show link  -->
+        <div id = linkbar> </div>
+        
+        <div id = midder>
+        <!-- left -->
+            <div class = "left">
+                <div class = "leftbar">
+                    <p><b><a class = "CategoryTitle">CATEGORY</a></b></p>
+                    <ui>
+                        <li><a onclick="LeftBarAction(0)">ALL</a></li>
+                        <li><a onclick="LeftBarAction(1)">RING</a></li>
+                        <li><a onclick="LeftBarAction(2)">BRACELET</a></li>
+                        <li><a onclick="LeftBarAction(3)">EARRING</a></li>
+                        <li><a onclick="LeftBarAction(4)">NECKLACE</a></li>
+                    </ui>
+                    <p><b><a class = "CategoryTitle">PRICE</a></b></p>
+                    <ui>
+                        <li><a onclick="LeftBarAction(5)">Less than 1.000k </a></li>
+                        <li><a onclick="LeftBarAction(6)">1.000k - 2.000k</a></li>
+                        <li><a onclick="LeftBarAction(7)">More than 2.000k</a></li>
+                
+                    </ui> 
+                    <p><b><a class = "CategoryTitle">ENTER PRICE RANGE</a></b></p> 
+                    <label class = "Pricelab" for="PriceMin">Min</label>
+                    <input type="text" id="PriceMin" placeholder="--vnd--"><br>
+                
+                    <label class = "Pricelab" for="PriceMax">Max</label>
+                    <input type="text" id="PriceMax" placeholder="--vnd--"><br>
+
+                    <button class = "button PriceSearch" onclick = "Search(1)"> Search </button>
+                </div>
+            </div>
+    
+        <!-- content -->
+            <div id = "content"> </div>
+        <!-- thanh trang    -->     
+    
+        <div class ="PaginationBar">
+                <div class="pagination"></div>
+            </div>
+    </div>        
+        <!-- footer -->
+        <div id = "footer">
+            <p>footer</p>
+        </div> 
+        <!-- thông tin sản phẩm  -->
+        <div id = "ProductWindow">
+            <div class = "ProductDetail">
+                <!-- Hình ảnh sản phẩm -->
+                <label class = "Detail_Title"><b>DETAIL</b></label>
+                <div id = "Product_Image">
+                </div> 
+                
+                <button class = "CloseDetail" onclick="ExitDetail()"><i class="fa fa-close"></i></button>
+                
+                <div id = "ProductDetail_left">
+                    <label class = "lab_Detail" ><b> NAME: </b></label><br>
+                        <input id = "inputName" type = "text" value = "" style= "width: 350px; height: 22px; border: none; font-size: 20px; font-family: 'Times New Roman', Times, serif; background-color: rgb(240, 240, 240);" readonly><br>
+                    <label class = "lab_Detail" ><b> BRAND: </b></label><br>
+                        <input id = "inputBrand" type = "text" value = "" style = "width: 350px; height: 22px; border: none; font-size: 20px; font-family: 'Times New Roman', Times, serif; background-color: rgb(240, 240, 240);" readonly><br>
+                    <label class = "lab_Detail" ><b> CATEGORY: </b></label><br>
+                        <input id = "inputCategory" type = "text" value = "" style = "width: 350px; height: 22px; border: none; font-size: 20px; font-family: 'Times New Roman', Times, serif; background-color: rgb(240, 240, 240);" readonly><br>
+                    <label class = "lab_Detail" ><b> PRICE: </b></label><br>
+                        <input id = "inputPrice" type = "text" value = "" style = "width: 350px; height: 22px; border: none; font-size: 20px; font-family: 'Times New Roman', Times, serif; background-color: rgb(240, 240, 240);" readonly><br>
+                    <label class = "lab_TotalPrice" style = "color: rgb(255, 55, 55); margin-left: auto; margin-right: 10px"><b> TOTAL: </b></label><br>
+                        <input id = "inputTotalPrice" type = "text" value = "" style = "color: rgb(255, 55, 55) ; width: 350px; height: 24px; border: none; font-size: 24px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"  readonly><br>
+                </div>
+
+                <div class = "BuyNumber">
+                    <button class = "ChangeNum decrease" onclick = "DecreaseNumber()">-</button>
+                    <input type = "number" id = "Number"  value = "1" onchange = " ChangeNumber(value)" style = "width: 60px; height: 40px; font-size: 20px; text-align: center;" min = "1">
+                    <button class = "ChangeNum increase" onclick = "IncreaseNumber()">+</button>
+                </div>
+                
+                <button class = "AddtoCart" onclick="AddCart()"><b>ADD TO CART</b></button>
+            </div>
+        </div>
+</body>
+</html>

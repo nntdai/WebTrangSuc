@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #khung{
+            height:500px; 
+            width:400px; 
+            margin:50px; 
+            border:solid;
+            background-color: white;
+        }
+        .nhap{
+            width: 100%;
+            height:80px;
+            margin-top: 15px;
+        }
+        #UserName,#ipnPass{
+            border: none;
+            border-bottom: solid;
+            padding: 20px;
+            outline: none;
+            height:50%;
+            width:95%;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        .or{
+            margin-top: 10px;
+        }
+        .orlogin{
+            border: solid black;
+            border-radius: 10px;
+            width: 45%;
+            margin-top: 2%;
+            margin-left: 3.5%;
+            height: auto;
+            float: left;
+        }
+        .orlogin img{
+            border: none;
+            outline: none;
+            width: 25px;
+            height: 25px;
+            position: relative;
+            left:42%;
+            top:2px;
+        }
+        #login{
+            border: solid black;
+            position: relative;
+            left:40%;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #login:hover{
+            background-color:lightgray;
+        }
+        #login img{
+            margin: 13px;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; height:1000px; border:solid; background-color: aquamarine">
+        <div id="khung">
+            <div style="height:100px">
+                <div style="float:right; width:40px; height:30px">
+                    <img src="images/close.svg" height="35px" width="35px">
+                </div>
+                <div style="float:left; height:auto; margin-top:30px; margin-left: 130px">
+                    <font size="7px" face="Verdana">Login</font>
+                </div>
+            </div>
+            <div style="height:auto">
+                <div class="nhap">
+                    <div style="height:auto; margin-left:20px; margin-top:5px; float:left">
+                        <img src="images/account1.svg" width="30px" height="30px">
+                    </div>
+                    <input name="UserName" id="UserName" type="text" placeholder="Username or Phone number">
+                </div>
+                <div class="nhap" >
+                    <div style="height:auto; margin-left:20px; margin-top:5px; float:left">
+                        <img src="images/password.svg" width="30px" height="30px">
+                    </div>
+                    <input name="ipnPass" id="ipnPass" type="password" placeholder="Password" />
+                    <div class="button">
+                        <button id="btnPass" type="button" >
+                            <img src="images/hide.svg" width="30px" height="30px">
+                        </button>
+                    </div>
+                </div>
+                <div class="or">
+                    <center><font size="3px" face="Verdana">Or</font></center>
+                </div>
+                <div style="height: 54px">
+                    <a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                        <div class="orlogin">
+                            <img src="images/facebookkv.svg">
+                        </div>
+                    </a>
+                    <a href="#", style="text-decoration: none">
+                        <div class="orlogin">
+                            <img src="images/search-engine.svg">
+                        </div>
+                    </a>
+                </div>
+                <div style="height: auto">
+                    <a href="#", style="text-decoration: none">
+                        <div id="login">
+                            <img src="images/arrow-right.svg">
+                        </div>
+                    </a>
+                </div>
+                <div style="margin-top: 10px">
+                    <center><font size="3px" face="Verdana">
+                        No account ? <a href="#", style="text-decoration: none">Create account</a>
+                    </font></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

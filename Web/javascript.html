@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #top{
+            height: auto;
+            background-color: aquamarine;
+            border:solid 1px;
+            margin:2px;
+            align-items: center;
+        }
+        #login{
+            height: 370px;
+            width: 400px;
+            background-color: darkblue;
+            border:solid 5px;
+            margin:10px;
+            position: relative;
+            left:100px;
+            margin: 0, auto;
+        }
+        .close{
+            cursor:pointer;
+            float:right;
+            border:solid 2px;
+            height:25px;
+            width: 25px;
+            border-radius: 50%;
+            background-color: white;
+        }
+        .close:hover{
+            background-color: red;
+        }
+        .khung{
+        height:30px; 
+        margin:2px; 
+        margin-top:5px  
+        }
+        .khungchu{
+        width:35%; 
+        float:left; 
+        margin-top:2px
+        }
+        .Dien{
+            width: 65%;
+            height: 100%;
+            float: right;
+            border-radius: 20px;
+        }
+        .nut{
+            width: 190px;
+            height: 40px;
+            margin:2.5px;
+            cursor: pointer;
+            float: left;
+        }
+    </style>
+    <script language="javascript">
+        function pheptinh1(){
+            var dta=document.getElementById("soa");
+            var dtb=document.getElementById("sob");
+            if(dta.value==""){
+                alert("Gia tri a rong moi nhap lai");
+                soa.focus();
+                return false;
+            }else if(dtb.value==""){
+                alert("Gia tri b rong moi nhap lai");
+                sob.focus();
+                return false;
+            }
+            var gta=parseFloat(dta.value);
+            var gtb=parseFloat(dtb.value);
+            var dau1=document.getElementById("pt");
+            var dau=dau1.value;
+            var sum=0;
+            switch(dau){
+                case 'cong':
+                    sum=gta+gtb; 
+                    break;
+                case 'tru':
+                    sum=gta-gtb; 
+                    break;
+                case 'nhan':
+                    sum=gta*gtb; 
+                    break;
+                case 'chia':
+                    sum=gta/gtb; 
+                    break;
+            }
+            document.getElementById("kq").value=sum;
+        }
+        // function pheptinh2(dta, dtb, pt){
+        //     pt=parseInt(dta.value)+parseInt(dtb.value);
+        //     document.getElementById("kq").value=pt;
+        // }
+    </script>
+</head>
+<body>
+    <div style="width:100%; height:800px; margin:0;border:solid 3px black">
+        <div id="top">
+            <input type="text" id="soa" value="" placeholder="Nhap so a">
+            <input type="text" id="sob" value="" placeholder="Nhap so b">
+            <select name="pheptinh" id="pt" size="1">
+                <option value="cong">Cong</option>
+                <option value="tru">Tru</option>
+                <option value="nhan">Nhan</option>
+                <option value="chia">Chia</option>
+            </select>
+            <input type="button" value="In ket qua" onclick="pheptinh1(document.getElementById('soa'), document.getElementById('sob'), document.getElementById('pt'), document.getElementById('kq'))">
+            <input type="text" id="kq" value="" placeholder="Ket qua la">
+        </div>
+        <div id="login">
+            <div style="height:40px; border:solid 2px; margin:2px; background-color:cornflowerblue">
+                <div style="float:left">
+                    <font size="5px" color="white">
+                    Đăng kí
+                    </font>
+                </div>
+                <div class="close">
+                    <center><img src="images/close.svg"></center>
+                </div>
+            </div>
+            <div style="height:auto; border:solid 2px; margin: 2px; background-color: cornflowerblue;">
+                <div class="khung">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Mã số sinh viên</font></center>
+                    </div>
+                    <input type="text" class="Dien" value="" placeholder="Nhập mã số sinh viên">
+                </div>
+                <div class="khung">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Họ và tên</font></center>
+                    </div>
+                    <input type="text" class="Dien" value="" placeholder="Nhập mã họ và tên">
+                </div>
+                <div class="khung">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Ngày sinh</font></center>
+                    </div>
+                    <input type="date" class="Dien" value="" placeholder="Nhập mã họ và tên">
+                </div>
+                <div class="khung">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Giới tính</font></center>
+                    </div>
+                    <div style="float: left">
+                        <center><font size="4px" color="white">Nam</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="radio" value="" checked="checked" onclick=""></div>
+                    <div style="margin-left:10px; float: left">
+                        <center><font size="4px" color="white">Nữ</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="radio" value="" onclick=""></div>
+                </div>
+                <div style="height: 45px; margin:2px">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Sở thích</font></center>
+                    </div>
+                    <div style="float: left">
+                        <center><font size="4px" color="white">Mĩ Thuật</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="checkbox" class="" value=""></div>
+                    <div style="margin-left:20px; float: left">
+                        <center><font size="4px" color="white">Tin Học</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="checkbox" class="" value=""></div>
+                    <div style="float: left">
+                        <center><font size="4px" color="white">Âm Nhạc</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="checkbox" class="" value=""></div>
+                    <div style="margin-left:10px; float: left">
+                        <center><font size="4px" color="white">Thể Thao</font></center>
+                    </div>
+                    <div style="float:left; margin-top:1px"><input type="checkbox" class="" value=""></div>
+                </div>
+                <div class="khung">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Email</font></center>
+                    </div>
+                    <input type="text" class="Dien" value="" placeholder="Nhập email">
+                </div>
+                <div class="khung", style="margin-bottom:5px">
+                    <div class="khungchu">
+                        <center><font size="4px" color="white">Điện thoại</font></center>
+                    </div>
+                    <input type="text" class="Dien" value="" placeholder="Nhập số điện thoại">
+                </div>
+            </div>
+            <input type="button" class="nut" value="Hủy bỏ">
+            <input type="button" class="nut" value="Đăng kí">
+        </div>
+    </div>
+</body>
+</html>

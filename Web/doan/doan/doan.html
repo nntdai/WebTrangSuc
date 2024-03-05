@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="doan.css">
+    <script src="doan.js"></script>
+</head>
+<body>
+<div id="container" style = "width:100%;margin:0px auto;height: auto;background-color:#f1f1f1">
+    <div id="header">
+            <div class="user" onclick="openLogin()"><a href=#><img src="images/account.svg" height="40px" width="40px"></a>
+                </div>
+            <div class="cart"><a href=#><img src="images/bag.svg" height="40px" width="40px" ></a></div>
+    </div>
+    <div id="modal-background">
+    <form class="khung animate" action="" method="post">
+        <div id="khung">
+            <div id="khunglogin">
+                    <div style="height:100px">
+                        <div class="close" onclick="closeLogin()" style="float:right; width:35px; height:30px;cursor: pointer;">
+                            <img src="images/close.svg" height="35px" width="35px">
+                        </div>
+                        <div style="float:left; height:auto; margin-top:30px; margin-left: 65px">
+                            <font size="7px" face="Verdana">Đăng nhập</font>
+                        </div>
+                    </div>
+                    <div style="height:auto">
+                        <div class="nhap">
+                            <div style="height:auto; margin-left:20px; margin-top:5px; float:left">
+                                <img src="images/account1.svg" width="30px" height="30px">
+                            </div>
+                            <input name="UserName" id="UserName" value="" type="text" placeholder="Email hoặc SĐT" onblur="checkUserName()" />
+                            <div id="ErrorUN" style="height:20px"></div>
+                        </div>
+                        <div class="nhap" >
+                            <div style="height:auto; margin-left:20px; margin-top:5px; float:left;width: 100%;">
+                                <img src="images/password.svg" width="30px" height="30px">
+                            </div>
+                            <input name="ipnPass" id="ipnPass" value="" type="password" placeholder="Mật khẩu" onblur="checkPass()"/>
+                            
+                            <div id="eyes" style="float:left;clear:right;">
+                                <button name="btnPass" id="btnPass" type="button" onclick="hidePass(this)">        <!-- an hien mat khau --> 
+                                    <img src="images/hide.svg" id="hideImage" width="30px" height="30px">
+                                </button> 
+                            </div>
+                        </div>
+                        <div id="ErrorP" style="height:20px;"></div>
+                        <div class="or">
+                            <center><font size="3px" face="Verdana">Hoặc</font></center>
+                        </div>
+                        <div style="height: 54px">
+                            <a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                                <div class="orlogin">
+                                    <img src="images/facebookkv.svg">
+                                </div>
+                            </a>
+                            <a href="#", style="text-decoration: none">
+                                <div class="orlogin">
+                                    <img src="images/search-engine.svg">
+                                </div>
+                            </a>
+                        </div>
+                        <div style="height: auto">
+                            <a href="#", style="text-decoration: none">
+                                <div id="login">
+                                    <button name="loGin" id="loGin" type="button" onclick="checkUserName()" >
+                                        <img src="images/arrow-right.svg">
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <center><font size="3px" face="Verdana">
+                                <a href="#", style="text-decoration: none">Quên mật khẩu ?</a>
+                            </font></center>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <center><font size="3px" face="Verdana">
+                                Chưa có tài khoản ? <a href="#" id="createTK" onclick="rotate()" style="text-decoration: none">Tạo tài khoản</a>
+                            </font></center>
+                        </div>
+                    </div>
+                
+                </div>
+                <div id="khungregister" class="section">
+                    <div style="height:100px">
+                        <div style="float:right; width:40px; height:30px; cursor: pointer" onclick="closeLogin()">
+                            <img src="images/close.svg" height="35px" width="35px">
+                        </div>
+                        <div style="float:left; height:auto; margin-top:30px; margin-left: 100px">
+                            <font size="7px" face="Verdana">Đăng kí</font>
+                        </div>
+                    </div>
+                    <div style="height:auto">
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">             
+                                <font size="4px" face="Verdana">Họ và tên:</font>
+                            </div>
+                            <input type="text" id="name" onblur="checkName()"/>
+                            <div id="ErrorN" style="height:20px;float:left"></div>                    
+                            <!-- Ô nhập họ và tên -->
+                        </div>
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Ngày sinh: </font>
+                            </div>
+                            <input type="date" id="Dayofbirth" value="" min="" max="" onmouseover="maxDateBirth()"  onblur="checkDateBirth() "/>
+                           <div id="ErrorBD" style="height:20px;float:left"></div>                    
+                            <!-- Ô ngày sinh -->
+                        </div>
+                        <div class="nhapradio">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Giới tính: </font>
+                            </div>
+                            <div style="float: left; margin-left: 10px">
+                                <input name="gioitinh" type="radio" id="node1" value="nam" checked/>
+                            </div>
+                            <div style="float: left; margin-left: 5px">
+                                <font size="4px" face="Verdana">Nam</font>
+                            </div>
+                            <div style="float: left; margin-left: 15px">
+                                <input name="gioitinh" type="radio" id="node2" value="nu"/>
+                            </div>
+                            <div style="float: left; margin-left: 5px">
+                                <font size="4px" face="Verdana">Nữ</font>
+                            </div>
+                        </div>
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Số điện thoại:</font>
+                            </div>
+                            <input type="text" id="Phone" onblur="checkNumber()"/>
+                            <div id="ErrorNumber" style="height:20px;float:left"></div>   
+                            <!-- ô sđt -->
+                        </div>
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Email:</font>
+                            </div>
+                            <input type="text" id="Email"onblur="checkEmail()"/>
+                            <div id="ErrorE" style="height:20px;float:left" ></div>   
+                            <!-- ô Email -->
+                        </div>
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Mật khẩu:</font>
+                            </div>
+                            <input type="text" value="" id="Password" onblur="checkPassRegister()" onchange="checkPassRegisterA()"/>
+                            <div id="ErrorPR" style="height:20px;float:left"></div>   
+                        </div>
+                        <div class="nhap">
+                            <div style="float: left; margin-left:10px">
+                                <font size="4px" face="Verdana">Nhập lại mật khẩu:</font>
+                            </div>
+                            <input type="text" id="Password-again" onblur="checkPassRegisterA()"/>
+                            <div id="ErrorPR-A" style="height:20px;float:left;"></div>  
+                        </div>
+                        <button id="btn">
+                            <img src="images/arrow-right.svg">
+                        </button>
+                        <div style="margin: 20px 0">
+                            <center><font size="3px" face="Verdana">
+                                Đã có tài khoản ? <a href="#" onclick="rotate1()" style="text-decoration: none">Đăng nhập</a>
+                            </font></center>
+                        </div>
+                    </div>
+                </div></div>
+            </form></div>
+    <div id="topmenu">
+        <div style="float:left;height: auto;width:68%">
+        <ul id="mothermenu">
+            <li class="home"><a href ="#" style=" text-decoration: none; ">HOME</a></li>
+            <li class="news"><a href ="#" style=" text-decoration: none;">NEWS</a></li>
+            <li class="products"><a href ="#" style=" text-decoration: none;">PRODUCTS</a>
+                <ul class="sub-menu">
+                    <li><a href="#">RING</a></li>
+                    <li><a href="#">NECKLACE</a></li>
+                    <li><a href="#">EAR RING</a></li>
+                    <li><a href="#">BRACELET</a></li>
+                </ul>
+            </li>
+            <li class="support"><a href=# style="text-decoration: none; position: relative;">SUPPORT</a></li>
+        </ul>
+        </div>
+        <div style="float:right;height:auto;width: auto;">
+            <form action="" id="search-box">
+                <input type="text" id="search-text" placeholder="Bạn muốn tìm gì ?" required>
+                <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="slider">
+        <div class="slide-wrapper">
+            <div class="slide"><img src="images/2149791.jpg"></div>
+            <div class="slide"><img src="images/2960491.jpg"></div>
+            <div class="slide"><img src="images/wp3308149.jpg"></div>
+            </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        <div id="dot-wrapper" style="text-align:center">
+        <span class="dot" onclick="chuyenSlide(1)"></span>
+        <span class="dot" onclick="chuyenSlide(2)"></span>
+        <span class="dot" onclick="chuyenSlide(3)"></span>
+        </div>
+    </div>
+    <div id="intro" style="margin:3px 0px;float:left; border: solid; width: 100%">
+        <center><img src="images/je++.png" width="100%"></center>
+    </div>
+    
+    <div class="tieude"> 
+       <div class="tuade">NEW PRODUCTS </div>
+        <div class="seemore"><a href="#">See more</a></div> 
+    </div>
+    <div class="newproduct">
+        <div class="product">
+            <div class="hinhanh"><img src="images/304385268_835231607676800_509655912598633799_n.jpg" class="cangiua" width="280px" height="280px"></div>
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+        <div class="product">
+        <div class="hinhanh"><img src="images/z3767722486655_133afd98d9ac10572252c534e0b47325.jpg" class="cangiua" width="280px" height="280px"></div>
+        <div class="chitiet">
+        Diamond
+        <br>
+        999.999.9VND
+        </div>
+        <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div></div>
+        <div class="product">
+            <div class="hinhanh"><img src="images/z3767721890083_3930e3d9f1c4a575280eaab5086ee70c.jpg" class="cangiua" width="280px" height="280px"></div>
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+        <div class="product">
+            <div class="hinhanh"><img src="images/dia.jpg" class="cangiua" width="280px" height="280px"></div>
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+    </div>
+    <div class="tieude"> 
+        <div class="tuade">SALES </div>
+         <div class="seemore"><a href="#">See more</a></div> 
+     </div>
+    <div class="sales">
+        <div class="product">
+            <div class="hinhanh">
+                <img src="images/304385268_835231607676800_509655912598633799_n.jpg" class="cangiua" width="280px" height="280px">
+            <div class="indexsale">-33%</div>
+            </div>
+            
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+        <div class="product">
+        <div class="hinhanh">
+            <img src="images/z3767722486655_133afd98d9ac10572252c534e0b47325.jpg" class="cangiua" width="280px" height="280px">
+                <div class="indexsale">-33%</div>
+        </div>
+        <div class="chitiet">
+        Diamond
+        <br>
+        999.999.9VND
+        </div>
+        <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div></div>
+        <div class="product">
+            <div class="hinhanh">
+                <img src="images/z3767721890083_3930e3d9f1c4a575280eaab5086ee70c.jpg" class="cangiua" width="280px" height="280px">
+            <div class="indexsale">-33%</div>
+            </div>
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+        <div class="product">
+            <div class="hinhanh">
+                <img src="images/dia.jpg" class="cangiua" width="280px" height="280px">
+            <div class="indexsale">-33%</div>
+            </div>
+            <div class="chitiet">
+            Diamond
+            <br>
+            999.999.9VND
+            </div>
+            <div class="mua"><img src="images/bag.svg" height="50px" width="50px" style="float:right"></div>
+        </div>
+    </div>
+    <div id="Footer">
+        <center><font size="5px", face="Verdana"color="white">JEWEL HEARTS<br></font></center>
+        <div id="left">
+            <font size="3px", face="Verdana"color="white">
+                <p>Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5, TPHCM</p>
+                <p>Email: JewelHearts@gmail.com</p>
+                <p>Num: (+84)986197629</p>
+            </font>
+            <div><a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                <img src="images/facebook-logo-2019.svg", width="50", height="50">
+            </a>
+            <a href="https://www.facebook.com/truc.xuan.161/", style="text-decoration: none">
+                <img src="images/twitter.svg", width="60", height="50", style="margin-left:15px">
+            </a></div>
+        </div>
+            <div id="right">
+                <font size="4px", face="Verdana"color="white">
+                <ul>
+                    <li><a href="#", style="text-decoration: none; color:white">SUPPPORT</a></li>
+                    <li><a href="#", style="text-decoration: none; color:white">CONTACT US</a></li>
+                    <li><a href="#", style="text-decoration: none; color:white">ABOUT JEWEL HEARTS</a></li>
+                    <li>PAYMENT METHODS</li>
+                </ul>
+                </font>
+                <div class="pp"><a href="#", style="text-decoration: none">
+                    <img src="images/google-pay.svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/visa.svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/paypal (1).svg">
+                </a>
+                <a href="#", style="text-decoration: none">
+                    <img src="images/master-card.svg">
+                </a></div>
+            </div>
+    </div> 
+</div>
+</body>
+</html>
